@@ -6,4 +6,9 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+/* GET project page */
+router.get("/projects", (req, res, next) => {
+res.render("project", { "message": req.flash("error") });
+});
+
 module.exports = router;

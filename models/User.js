@@ -6,7 +6,10 @@ const userSchema = new Schema({
   password: String,
   firstname : String,
   lastname : String,
-  companyName : String,
+  companyName : {
+    type: String,
+    default: 'Acme'
+  },
   image : String,
   skills : [{ type: Schema.ObjectId, ref: "Skill" }],
   experiences : [String],

@@ -1,25 +1,26 @@
-
-<h2>Login</h2>
-
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>Login</button>
-
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
+<div class="login-form">
+  <form action="" method="post">
+    <h2 class="text-center">Log in</h2>
+    <div class="form-group">
+      <input type="text" name="email" class="form-control" placeholder="Email" required="required">
+    </div>
+    <div class="form-group">
+      <input type="password"name="password" class="form-control" placeholder="Password" required="required">
+      <br>
+      {{#if message }}
+      <div class="error-message">{{ message }}</div>
+      {{/if}}
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block">Log in</button>
+    </div>
+    {{!-- <div class="clearfix">
+      <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+      <a href="#" class="pull-right">Forgot Password?</a>
+    </div> --}}
+  </form>
+   <p class="account-message">
+    Don't you already have an account?
+    <a href="/auth/signup">Sign up</a>
   </p>
-</form>
+</div>
