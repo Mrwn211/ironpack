@@ -6,6 +6,7 @@ const userSchema = new Schema({
   password: String,
   firstname : String,
   lastname : String,
+  accountType : { type : String, enum : ["ironhacker","entreprise"]},
   companyName : {
     type: String,
     default: 'Acme'
