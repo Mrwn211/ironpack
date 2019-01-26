@@ -9,12 +9,12 @@ const bcryptSalt = 10;
 
 
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
+  res.render("index", { "message": req.flash("error") });
 });
 
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/",
-  failureRedirect: "/auth/login",
+  failureRedirect: "index",
   failureFlash: true,
   passReqToCallback: true
 }));
