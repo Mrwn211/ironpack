@@ -34,14 +34,14 @@
             <input class="form-control" type="text" value="Bishop">
           </div>
         </div>
-        {{!-- {{#if accountType === "enterprise" }} --}}
+        {{#if isEnterprise }}
         <div class="form-group">
           <label class="col-lg-3 control-label">Company:</label>
           <div class="col-lg-8">
             <input class="form-control" type="text" value="">
           </div>
         </div>
-        {{!-- {{else}} {{#if accountType === "ironhacker"}} --}}
+        {{else}}
         <div class="form-group">
           <label class="col-lg-3 control-label">Competences:</label>
           <div class="form-check form-check-inline col-lg-3">
@@ -69,14 +69,6 @@
             <label class="form-check-label" for="Python">Python</label>
           </div>
           <div class="form-check form-check-inline col-lg-3">
-            <input class="form-check-input" type="checkbox" id="HTML5" value="option3">
-            <label class="form-check-label" for="HTML5">7</label>
-          </div>
-          <div class="form-check form-check-inline col-lg-3">
-            <input class="form-check-input" type="checkbox" id="VueJS" value="VueJS">
-            <label class="form-check-label" for="VueJS">VueJS</label>
-          </div>
-          <div class="form-check form-check-inline col-lg-3">
             <input class="form-check-input" type="checkbox" id="UX Design" value="UX Design">
             <label class="form-check-label" for="UX Design">UX Design</label>
           </div>
@@ -85,11 +77,11 @@
             <label class="form-check-label" for="Data">Data</label>
           </div>
           <div class="form-check form-check-inline col-lg-3">
-            <input class="form-check-input" type="checkbox" id="Other" value="Other">
-            <label class="form-check-label" for="Other">Other</label>
+            <input class="form-check-input" type="checkbox" id="VueJS" value="VueJS">
+            <label class="form-check-label" for="Data">VueJS</label>
           </div>
         </div>
-        {{!-- {{/if}}{{/if}} --}}
+        {{/if}}
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
