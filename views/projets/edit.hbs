@@ -1,0 +1,29 @@
+<h2>Edit</h2>
+<form action="/projects/edit/{{projectEdit._id}}" method="post">
+  <label for="">Name:</label>
+  <input type="text" name="name" value="{{projectEdit.name}}">
+  <br>
+
+  <label for="">Company:</label>
+  <input type="text" name="occupation" value="{{projectEdit.owner}}">
+  <br>
+
+  <label for="">Category:</label>
+  <input type="text" name="catchPhrase" value="{{projectEdit.category}}">
+  <br>
+
+  <label for="">Summary:</label>
+  <input type="text" name="catchPhrase" value="{{projectEdit.summary}}">
+  <br>
+
+  <label for="">Skills:</label>
+  <input type="text" name="catchPhrase" value="{{projectEdit.skills}}">
+  <br>
+
+  <label for="">Duration:</label>
+  <input type="text" name="catchPhrase" value="{{projectEdit.duration}}">
+  <br>
+
+  <button type="submit">EDIT</button>
+
+</form>
