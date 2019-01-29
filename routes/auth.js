@@ -2,6 +2,8 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const ensureLogin = require("connect-ensure-login");
+
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -12,7 +14,7 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/projects",
+  successRedirect: "/profile/edit",
   failureRedirect: "/badlogin",
   failureFlash: true,
   passReqToCallback: true
@@ -26,6 +28,7 @@ router.post("/signup", (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const accountType = req.body.accountType;
+  console.log('accountType', accountType);
   if (email === "" || password === "") {
     res.render("auth/signup", { message: "Indicate email and password" });
     return;
@@ -48,7 +51,7 @@ router.post("/signup", (req, res, next) => {
 
     newUser.save()
     .then(() => {
-      res.redirect("/");
+      res.redirect("/profile/edit");
     })
     .catch(err => {
       res.render("auth/signup", { message: "Something went wrong" });
