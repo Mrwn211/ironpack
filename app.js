@@ -16,7 +16,7 @@ const flash = require("connect-flash");
 
 mongoose
 	.connect(
-		"mongodb://localhost/ironpack",
+		process.env.MONGODB_URI,
 		{ useNewUrlParser: true }
 	)
 	.then(x => {
