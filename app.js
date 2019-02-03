@@ -87,4 +87,7 @@ app.use("/auth", authRoutes);
 const projectsRoutes = require("./routes/projects");
 app.use("/", projectsRoutes);
 
+const profilesRoutes = require("./routes/profiles");
+app.use("/", profilesRoutes);
+
 module.exports = app;

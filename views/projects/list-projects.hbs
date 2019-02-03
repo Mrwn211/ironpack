@@ -1,0 +1,12 @@
+<h2>All projects</h2>
+{{#each projectsAll}}
+<p>Company: {{this.owner}}</p>
+<p>Category: {{this.category}}</p>
+<p>Skills: {{this.skills}}</p>
+<p>Duration: {{this.duration}}</p>
+<div class="text-center">
+  <a href="/project-detail/{{this.id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">See the
+    project</a>
+</div>
+<hr>
+{{/each}}
