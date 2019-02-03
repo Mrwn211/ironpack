@@ -34,23 +34,23 @@ router.get(
 );
 
 /* GET profile edit page */
-router.get("/profile/edit", ensureLogin.ensureLoggedIn("/auth/login"), (req, res, next) => {
+router.get(
+  "/profile/edit",
+  ensureLogin.ensureLoggedIn("/auth/login"),
+  (req, res, next) => {
+    console.log("id", req.user._id);
 
-  console.log('id', req.user._id);
+    User.findById(req.user._id, (err, user) => {
+      if (err) return next(err);
 
-  User.findById(req.user._id, (err, user) => {
+      const isEnterprise = user.accountType === "enterprise";
 
-    if (err) return next(err);
-
-    const isEnterprise = user.accountType === 'enterprise';
-
-    res.render("profile-edit", {
-      isEnterprise,
-      "message": req.flash("error")
+      res.render("profile-edit", {
+        isEnterprise,
+        message: req.flash("error")
+      });
     });
-
-  });
-  
-});
+  }
+);
 
 module.exports = router;

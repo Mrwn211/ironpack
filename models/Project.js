@@ -23,10 +23,10 @@ const projectSchema = new Schema(
       {
         type: String,
         enum: [
-          "Moins d'un mois",
-          "D'un à trois mois",
-          "De trois à six mois",
-          "Plus de six mois"
+          "Less than a month",
+          "Up to 3 months",
+          "From 3 to 6 months",
+          "More than 6 months"
         ]
       }
     ]
