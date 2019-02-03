@@ -1,0 +1,11 @@
+<h2>All Ironhackers</h2>
+{{#each ironhackersAll}}
+<p>Name: {{this.firstname}} {{this.lastname}}</p>
+<p>Job: {{this.lastJob}}</p>
+<p>Skills: {{this.skills}}</p>
+<div class="text-center">
+  <a href="/ironhacker-detail/{{this.id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">See
+    more</a>
+</div>
+<hr>
+{{/each}}

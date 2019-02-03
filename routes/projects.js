@@ -1,33 +1,55 @@
 const express = require("express");
 const router = express.Router();
 const Project = require("../models/Project");
+const Skill = require("../models/Skill");
 
-//Enterprise voit la liste de ses projects
-router.get("/my-projects", (req, res) => {
-	res.render("my-projects");
+// Enterprise's list of projects
+router.get("/my-projects", (req, res, next) => {
+  Project.find()
+    .then(listOfProjects => {
+      res.render("projects/my-projects", { listOfProjects });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
-// //Ironhacker voit les projets
-// router.get("/projects", (req, res, next) => {
-// 	Project.find()
-// 		.then(listOfProjects => {
-// 			res.render("projects/index", { listOfProjects });
-// 		})
-// 		.catch(error => {
-// 			next(error);
-// 		});
-// });
+//Entreprise adds new projects
+router.get("/my-projects", (req, res) => {
+  res.render("projects/my-projects");
+});
 
-//Enterprise delete Projects
+router.post("/my-projects", (req, res, next) => {
+  const { name, category, summary, skills, duration } = req.body;
+  const newProject = new Project({
+    name: name,
+    owner: req.user.id,
+    category: category,
+    summary: summary,
+    skills: req.skills,
+    duration: duration
+  });
+  newProject
+    .save()
+    .then(project => {
+      res.redirect("my-projects");
+    })
+    .catch(error => {
+      console.log(error);
+      res.render("/my-projects");
+    });
+});
+
+//Deleting one project
 router.post("/my-projects/:id/delete", (req, res, next) => {
-	let projectId = req.params.id;
-	Project.findByIdAndRemove({ _id: projectId })
-		.then(project => {
-			res.redirect("/my-projects");
-		})
-		.catch(error => {
-			next(error);
-		});
+  let projectId = req.params.id;
+  Project.findByIdAndRemove({ _id: projectId })
+    .then(listOfProjects => {
+      res.redirect("/my-projects");
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 // //Enterprise edit Projects
@@ -56,16 +78,27 @@ router.post("/my-projects/:id/delete", (req, res, next) => {
 // 		});
 // });
 
-// //Inronhacker see the Details Page
-// router.get("/projects/:id", (req, res, next) => {
-// 	let projectId = req.params.id;
-// 	Project.findOne({ _id: projectId })
-// 		.then(projectDetail => {
-// 			res.render("projects/show", { projectDetail });
-// 		})
-// 		.catch(error => {
-// 			next(error);
-// 		});
-// });
+//Ironhacker see all the projects
+router.get("/projects-page", (req, res, next) => {
+  Project.find()
+    .then(projectsAll => {
+      res.render("projects/list-projects", { projectsAll });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+// //Inronhacker see one particular project
+router.get("/project-detail/:id", (req, res, next) => {
+  let projectId = req.params.id;
+  Project.findOne({ _id: projectId })
+    .then(projectDetail => {
+      res.render("projects/project-detail", { projectDetail });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
 
 module.exports = router;

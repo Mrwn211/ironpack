@@ -5,7 +5,7 @@ const User = require("../models/User");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render('index');
+  res.render("index");
 });
 
 // /* GET project page */
@@ -15,22 +15,22 @@ router.get("/", (req, res, next) => {
 
 /* GET profile edit page */
 router.get(
-	"/profile/edit",
-	ensureLogin.ensureLoggedIn("/auth/login"),
-	(req, res, next) => {
-		console.log("id", req.user._id);
+  "/profile/edit",
+  ensureLogin.ensureLoggedIn("/auth/login"),
+  (req, res, next) => {
+    console.log("id", req.user._id);
 
-		User.findById(req.user._id, (err, user) => {
-			if (err) return next(err);
+    User.findById(req.user._id, (err, user) => {
+      if (err) return next(err);
 
-			const isEnterprise = user.accountType === "enterprise";
+      const isEnterprise = user.accountType === "enterprise";
 
-			res.render("profile-edit", {
-				isEnterprise,
-				message: req.flash("error")
-			});
-		});
-	}
+      res.render("profile-edit", {
+        isEnterprise,
+        message: req.flash("error")
+      });
+    });
+  }
 );
 
 /* GET profile edit page */
