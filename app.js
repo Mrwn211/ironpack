@@ -79,7 +79,7 @@ app.use(
   })
 );
 app.use(flash());
-require("./passport")(app);s
+require("./passport")(app);
 
 const index = require("./routes/index");
 app.use("/", index);
