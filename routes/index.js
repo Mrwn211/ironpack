@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ensureLogin = require("connect-ensure-login");
 const User = require("../models/User");
-const uploadCloud = require('../config/cloudinary.js');
+const uploadCloud = require("../config/cloudinary.js");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -53,7 +53,5 @@ router.get(
     });
   }
 );
-
-
 
 module.exports = router;

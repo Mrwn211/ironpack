@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const ensureLogin = require("connect-ensure-login");
+const uploadCloud = require("../config/cloudinary.js");
 
-//User edit its profile
+//User edit his profile
 router.get(
   "/profile/edit/:id",
   ensureLogin.ensureLoggedIn("/auth/login"),
@@ -14,6 +15,26 @@ router.get(
       })
       .catch(error => {
         next(error);
+      });
+  }
+);
+
+//User edit his photo
+router.post(
+  "profile/edit/:id",
+  ensureLogin.ensureLoggedIn("/auth/login"),
+  uploadCloud.single("photo"),
+  (req, res, next) => {
+    User.findOne({ _id: req.params.id });
+    const image = req.file.url;
+    const profileUpdated = new User(image);
+    newUser
+      .save()
+      .then(profileEdit => {
+        res.render("profile/edit", { profileEdit });
+      })
+      .catch(error => {
+        console.log(error);
       });
   }
 );
