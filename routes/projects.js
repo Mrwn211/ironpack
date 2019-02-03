@@ -18,7 +18,7 @@ router.get(
       });
   }
 );
-Ò;
+;
 
 //Enterprise adds new projects
 router.get(
