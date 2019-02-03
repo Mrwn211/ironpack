@@ -6,9 +6,10 @@
     <!-- left column -->
     <div class="col-md-3">
       <div class="text-center">
-        <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+        <img src="//placehold.it/100" class="avatar img-circle" alt="photo">
         <h6>Upload a different photo...</h6>
-        <input type="file" class="form-control">
+        <form action="/profile/edit" method="post" enctype="multipart/form-data">
+          <input type="file" class="form-control" name="photo">
       </div>
       <br>
       {{#if isEnterprise }}

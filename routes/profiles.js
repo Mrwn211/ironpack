@@ -21,6 +21,7 @@ router.get(
 router.post(
   "/projects/edit/:id",
   ensureLogin.ensureLoggedIn("/auth/login"),
+  uploadCloud.single("photo"),
   (req, res, next) => {
     const {
       email,
@@ -28,13 +29,13 @@ router.post(
       firstname,
       lastname,
       companyName,
-      image,
       skills,
       lastJob,
       experiences,
       resume,
       linkedinProfile
     } = req.body;
+    const image = req.file.url;
     Project.update(
       { _id: req.params.id },
       {
