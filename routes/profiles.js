@@ -8,7 +8,6 @@ const uploadCloud = require("../config/cloudinary.js");
 router.get(
   "/profile/edit",
   ensureLogin.ensureLoggedIn("/auth/login"),
-  uploadCloud.single("photo"),
   (req, res, next) => {
     User.findOne({ _id: req.user.id })
       .then(profileEdit => {
@@ -20,21 +19,23 @@ router.get(
   }
 );
 
-router.post("/projects/edit/:id", (req, res, next) => {
+router.post("/profile/edit",uploadCloud.single('photo'),(req, res, next) => {
   const {
     email,
     password,
     firstname,
     lastname,
     companyName,
-    image,
     skills,
     lastJob,
     experiences,
     resume,
     linkedinProfile
   } = req.body;
-  Project.update(
+
+  const image = req.file.url;
+
+  User.update(
     { _id: req.params.id },
     {
       $set: {
@@ -54,7 +55,7 @@ router.post("/projects/edit/:id", (req, res, next) => {
     { new: true }
   )
     .then(project => {
-      res.redirect("/projects/" + req.params.id);
+      res.redirect("/profile/" + req.params.id);
     })
     .catch(error => {
       next(error);
