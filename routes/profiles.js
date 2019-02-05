@@ -5,22 +5,22 @@ const ensureLogin = require("connect-ensure-login");
 const uploadCloud = require("../config/cloudinary.js");
 
 //User edit its profile
-router.get(
-  "/profile/edit",
-  ensureLogin.ensureLoggedIn("/auth/login"),
-  uploadCloud.single("photo"),
-  (req, res, next) => {
-    User.findOne({ _id: req.user.id })
-      .then(profileEdit => {
-        res.render("profile/edit", { profileEdit });
-      })
-      .catch(error => {
-        next(error);
-      });
-  }
-);
+// router.get(
+//   "/profile/edit",
+//   ensureLogin.ensureLoggedIn("/auth/login"),
+//   (req, res, next) => {
+//     console.log("coucou");
+//     User.findOne({ _id: req.user.id })
+//       .then(profileEdit => {
+//         res.render("profile/edit", { profileEdit });
+//       })
+//       .catch(error => {
+//         next(error);
+//       });
+//   }
+// );
 
-router.post("/projects/edit/:id", (req, res, next) => {
+router.post("/profile/edit", (req, res, next) => {
   const {
     email,
     password,
@@ -35,7 +35,7 @@ router.post("/projects/edit/:id", (req, res, next) => {
     linkedinProfile
   } = req.body;
   Project.update(
-    { _id: req.params.id },
+    { _id: req.user.id },
     {
       $set: {
         email,
@@ -54,7 +54,7 @@ router.post("/projects/edit/:id", (req, res, next) => {
     { new: true }
   )
     .then(project => {
-      res.redirect("/projects/" + req.params.id);
+      res.redirect("/profile/" + req.params.id);
     })
     .catch(error => {
       next(error);
