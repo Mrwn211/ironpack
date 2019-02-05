@@ -28,30 +28,31 @@ router.get(
 
       res.render("profile-edit", {
         isEnterprise,
-        message: req.flash("error")
+        message: req.flash("error"),
+        profileEdit: user
       });
     });
   }
 );
 
 /* GET profile edit page */
-router.get(
-  "/profile/edit",
-  ensureLogin.ensureLoggedIn("/auth/login"),
-  (req, res, next) => {
-    console.log("id", req.user._id);
+// router.get(
+//   "/profile/edit",
+//   ensureLogin.ensureLoggedIn("/auth/login"),
+//   (req, res, next) => {
+//     console.log("id", req.user._id);
 
-    User.findById(req.user._id, (err, user) => {
-      if (err) return next(err);
+//     User.findById(req.user._id, (err, user) => {
+//       if (err) return next(err);
 
-      const isEnterprise = user.accountType === "enterprise";
+//       const isEnterprise = user.accountType === "enterprise";
 
-      res.render("profile-edit", {
-        isEnterprise,
-        message: req.flash("error")
-      });
-    });
-  }
-);
+//       res.render("profile-edit", {
+//         isEnterprise,
+//         message: req.flash("error")
+//       });
+//     });
+//   }
+// );
 
 module.exports = router;
