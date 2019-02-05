@@ -5,21 +5,22 @@ const ensureLogin = require("connect-ensure-login");
 const uploadCloud = require("../config/cloudinary.js");
 
 //User edit its profile
-router.get(
-  "/profile/edit",
-  ensureLogin.ensureLoggedIn("/auth/login"),
-  (req, res, next) => {
-    User.findOne({ _id: req.user.id })
-      .then(profileEdit => {
-        res.render("profile/edit", { profileEdit });
-      })
-      .catch(error => {
-        next(error);
-      });
-  }
-);
+// router.get(
+//   "/profile/edit",
+//   ensureLogin.ensureLoggedIn("/auth/login"),
+//   (req, res, next) => {
+//     console.log("coucou");
+//     User.findOne({ _id: req.user.id })
+//       .then(profileEdit => {
+//         res.render("profile/edit", { profileEdit });
+//       })
+//       .catch(error => {
+//         next(error);
+//       });
+//   }
+// );
 
-router.post("/profile/edit",uploadCloud.single('photo'),(req, res, next) => {
+router.post("/profile/edit", uploadCloud.single('photo'), (req, res, next) => {
   const {
     email,
     password,

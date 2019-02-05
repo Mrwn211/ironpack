@@ -9,7 +9,7 @@ router.get(
   "/my-projects",
   ensureLogin.ensureLoggedIn("/auth/login"),
   (req, res, next) => {
-    Project.find()
+    Project.find({ owner: req.user.id })
       .then(listOfProjects => {
         res.render("projects/my-projects", { listOfProjects });
       })
@@ -18,8 +18,6 @@ router.get(
       });
   }
 );
-;
-
 //Enterprise adds new projects
 router.get(
   "/my-projects",
@@ -36,7 +34,7 @@ router.post(
     const { name, category, summary, skills, duration } = req.body;
     const newProject = new Project({
       name: name,
-      owner: req.user.id,
+      owner: req.user._id,
       category: category,
       summary: summary,
       skills: req.skills,
@@ -49,7 +47,7 @@ router.post(
       })
       .catch(error => {
         console.log(error);
-        res.render("/my-projects");
+        res.render("projects/my-projects");
       });
   }
 );
