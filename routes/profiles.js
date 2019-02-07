@@ -20,7 +20,7 @@ const uploadCloud = require("../config/cloudinary.js");
 //   }
 // );
 
-router.post("/profile/edit", uploadCloud.single('photo'), (req, res, next) => {
+router.post("/profile/edit", uploadCloud.single("photo"), (req, res, next) => {
   const {
     email,
     password,
@@ -35,9 +35,19 @@ router.post("/profile/edit", uploadCloud.single('photo'), (req, res, next) => {
   } = req.body;
 
   const image = req.file.url;
-
+  console.log(email,
+    password,
+    firstname,
+    lastname,
+    companyName,
+    // skills,
+    lastJob,
+    experiences,
+    resume,
+    linkedinProfile,
+   "req.params.id" , req.params.id)
   User.update(
-    { _id: req.params.id },
+    { email: req.body.email },
     {
       $set: {
         email,
@@ -55,8 +65,8 @@ router.post("/profile/edit", uploadCloud.single('photo'), (req, res, next) => {
     },
     { new: true }
   )
-    .then(project => {
-      res.redirect("/profile/" + req.params.id);
+    .then(profileEdit => {
+      res.redirect("/profile/edit");
     })
     .catch(error => {
       next(error);

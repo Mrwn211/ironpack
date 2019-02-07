@@ -260,4 +260,8 @@ table.table .avatar {
 .modal form label {
   font-weight: normal; }
 
+.text-center img {
+  height: 200;
+  width: 200; }
+
 /*# sourceMappingURL=style.css.map */
