@@ -37,10 +37,10 @@
             <td>{{this.skills}}</td>
             <td>{{this.duration}}</td>
             <td>
-              <a href="#editProjectModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
-                  title="Edit">&#xE254;</i></a>
-              <a href="#deleteProjectModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
-                  title="Delete">&#xE872;</i></a>
+              <a href="#editProjectModal" class="edit" data-toggle="modal" data-projectidedit="{{this.id}}"><i class="material-icons"
+                  data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a href="#deleteProjectModal" class="delete" data-toggle="modal" data-projectid="{{this.id}}"><i class="material-icons"
+                  data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
           </tr>
         </div>
@@ -103,13 +103,13 @@
               <label class="form-check-label" for="Javascript">Javascript</label>
               <input class="form-check-input" name="skills[5]" type="checkbox" id="Python" value="Python">
               <label class="form-check-label" for="Python">Python</label>
-              <input class="form-check-input" name="skills[6]" type="checkbox" id="UX-design" value="UX-design">
+              <input class="form-check-input" name="skills[6]" type="checkbox" id="VueJS" value="VueJS">
+              <label class="form-check-label" for="Other">Other</label>
+              <input class="form-check-input" name="skills[7]" type="checkbox" id="UX-design" value="UX-design">
               <label class="form-check-label" for="VueJS">VueJS</label>
-              <input class="form-check-input" name="skills[7]" type="checkbox" id="Other" value="Other">
-              <label class="form-check-label" for="UX-design">UX-design</label>
               <input class="form-check-input" name="skills[8]" type="checkbox" id="Data" value="Data">
               <label class="form-check-label" for="Data">Data</label>
-              <input class="form-check-input" name="skills[9]" type="checkbox" id="VueJS" value="VueJS">
+              <input class="form-check-input" name="skills[9]" type="checkbox" id="Other" value="Other">
               <label class="form-check-label" for="Other">Other</label> --}}
               <div class="form-group">
                 <label><strong>Duration</strong></label>
@@ -139,7 +139,7 @@
 <div id="editProjectModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form action="/my-projects/projectidedit" method="POST">
         <div class="modal-header">
           <h4 class="modal-title">Edit Project</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -153,15 +153,15 @@
           <div class="form-group">
             <label><strong>Category</strong></label>
             <br>
-            <input class="form-check-input" type="checkbox" id="frontEnd" value="frontEnd">
+            <input name="category[0]" class="form-check-input" type="checkbox" id="frontEnd" value="{{projectEdit.Front-end}}">
             <label class="form-check-label" for="frontEnd">Front-ends</label>
-            <input class="form-check-input" type="checkbox" id="backEnd" value="backEnd">
+            <input name="category[1]" class="form-check-input" type="checkbox" id="backEnd" value="{{projectEdit.Back-end}}">
             <label class="form-check-label" for="backEnd">Back-end</label>
-            <input class="form-check-input" type="checkbox" id="fullStack" value="fullStack">
+            <input name="category[2]" class="form-check-input" type="checkbox" id="fullStack" value="{{projectEdit.FullStack}}">
             <label class="form-check-label" for="fullStack">FullStack</label>
-            <input class="form-check-input" type="checkbox" id="ux" value="ux">
+            <input name="category[3]" class="form-check-input" type="checkbox" id="ux" value="{{projectEdit.UX-design}}">
             <label class="form-check-label" for="ux">UX design</label>
-            <input class="form-check-input" type="checkbox" id="data" value="data">
+            <input name="category[4]" class="form-check-input" type="checkbox" id="data" value="{{projectEdit.Data-Analyst}}">
             <label class="form-check-label" for="data">Data Analyst</label>
             <div class="form-group">
               <label><strong>Summary</strong></label>
@@ -171,24 +171,26 @@
             <div class="form-group">
               <label>Skills</label>
               <br>
-              <input class="form-check-input" type="checkbox" id="ReactJS" value="ReactJS">
+              <input name="skills[0]" class="form-check-input" type="checkbox" id="ReactJS" value="{{projectEdit.ReactJS}}">
               <label class="form-check-label" for="ReactJS">ReactJS</label>
-              <input class="form-check-input" type="checkbox" id="NodeJS" value="NodeJs">
+              <input name="skills[1]" class="form-check-input" type="checkbox" id="NodeJS" value="{{projectEdit.NodeJS}}">
               <label class="form-check-label" for="NodeJS">NodeJS</label>
-              <input class="form-check-input" type="checkbox" id="HTML5" value="HTML5">
+              <input name="skills[2]" class="form-check-input" type="checkbox" id="HTML5" value="{{projectEdit.HTML5}}">
               <label class="form-check-label" for="HTML5">HTML5</label>
-              <input class="form-check-input" type="checkbox" id="CSS3" value="CSS3">
+              <input name="skills[3]" class="form-check-input" type="checkbox" id="CSS3" value="{{projectEdit.CSS3}}">
               <label class="form-check-label" for="CSS3">CSS3</label>
-              <input class="form-check-input" type="checkbox" id="Javascript" value="Javascript">
+              <input name="skills[4]" class="form-check-input" type="checkbox" id="Javascript" value="{{projectEdit.Javascript}}">
               <label class="form-check-label" for="Javascript">Javascript</label>
-              <input class="form-check-input" type="checkbox" id="Python" value="Python">
+              <input name="skills[5]" class="form-check-input" type="checkbox" id="Python" value="{{projectEdit.Python}}">
               <label class="form-check-label" for="Python">Python</label>
-              <input class="form-check-input" type="checkbox" id="UX Design" value="UX Design">
-              <label class="form-check-label" for="UX Design">UX Design</label>
-              <input class="form-check-input" type="checkbox" id="Data" value="Data">
-              <label class="form-check-label" for="Data">Data</label>
-              <input class="form-check-input" type="checkbox" id="VueJS" value="VueJS">
+              <input name="skills[6]" class="form-check-input" type="checkbox" id="VueJS" value="{{projectEdit.VueJS}}">
               <label class="form-check-label" for="Data">VueJS</label>
+              <input name="skills[7]" class="form-check-input" type="checkbox" id="UX-design" value="{{projectEdit.UX-design}}">
+              <label class="form-check-label" for="UX-design">UX Design</label>
+              <input name="skills[8]" class="form-check-input" type="checkbox" id="Data" value="{{projectEdit.Data}}">
+              <label class="form-check-label" for="Data">Data</label>
+              <input name="skills[9]" class="form-check-input" type="checkbox" id="Other" value="{{projectEdit.Other}}">
+              <label class="form-check-label" for="Other">Other</label>
               <div class="form-group">
                 <label><strong>Duration</strong></label>
                 <br>
@@ -217,7 +219,7 @@
 <div id="deleteProjectModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form action="/my-projects/projectid/delete" method="POST">
         <div class="modal-header">
           <h4 class="modal-title">Delete the project</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -227,9 +229,7 @@
         </div>
         <div class="modal-footer">
           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-          {{!-- <form action="/my-projects/{{ this._id }}/delete" method="POST"> --}}
-            <input type="submit" class="btn btn-danger" value="Delete">
-            {{!-- </form> --}}
+          <input type="submit" class="btn btn-danger" value="Delete">
         </div>
       </form>
     </div>

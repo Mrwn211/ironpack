@@ -5,63 +5,53 @@ const ensureLogin = require("connect-ensure-login");
 const uploadCloud = require("../config/cloudinary.js");
 
 //User edit its profile
-// router.get(
-//   "/profile/edit",
-//   ensureLogin.ensureLoggedIn("/auth/login"),
-//   (req, res, next) => {
-//     console.log("coucou");
-//     User.findOne({ _id: req.user.id })
-//       .then(profileEdit => {
-//         res.render("profile/edit", { profileEdit });
-//       })
-//       .catch(error => {
-//         next(error);
-//       });
-//   }
-// );
+router.post(
+  "/profile/edit",
+  uploadCloud.single("photo"),
+  ensureLogin.ensureLoggedIn("/auth/login"),
+  (req, res, next) => {
+    const {
+      email,
+      password,
+      firstname,
+      lastname,
+      companyName,
+      skills,
+      lastJob,
+      experiences,
+      resume,
+      linkedinProfile
+    } = req.body;
 
-router.post("/profile/edit", uploadCloud.single('photo'), (req, res, next) => {
-  const {
-    email,
-    password,
-    firstname,
-    lastname,
-    companyName,
-    skills,
-    lastJob,
-    experiences,
-    resume,
-    linkedinProfile
-  } = req.body;
+    const image = req.file.url;
 
-  const image = req.file.url;
-
-  User.update(
-    { _id: req.params.id },
-    {
-      $set: {
-        email,
-        password,
-        firstname,
-        lastname,
-        companyName,
-        image,
-        skills,
-        lastJob,
-        experiences,
-        resume,
-        linkedinProfile
-      }
-    },
-    { new: true }
-  )
-    .then(project => {
-      res.redirect("/profile/" + req.params.id);
-    })
-    .catch(error => {
-      next(error);
-    });
-});
+    User.update(
+      { _id: req.user.id },
+      {
+        $set: {
+          email,
+          password,
+          firstname,
+          lastname,
+          companyName,
+          image,
+          skills,
+          lastJob,
+          experiences,
+          resume,
+          linkedinProfile
+        }
+      },
+      { new: true }
+    )
+      .then(project => {
+        res.redirect("/profile-edit");
+      })
+      .catch(error => {
+        next(error);
+      });
+  }
+);
 
 //Enterprise see all the ironhackers
 router.get(

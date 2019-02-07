@@ -72,31 +72,36 @@ router.post(
   }
 );
 
-// //Enterprise edit Projects
+// Enterprise edits Projects
 // router.get("/projects/edit/:id", (req, res, next) => {
-// 	Project.findOne({ _id: req.params.id })
-// 		.then(projectEdit => {
-// 			res.render("projects/edit", { projectEdit });
-// 		})
-// 		.catch(error => {
-// 			next(error);
-// 		});
+//   let projectIdEdit = req.params.id;
+//   Project.findOne({ _id: projectIdEdit })
+//     .then(projectEdit => {
+//       res.render("projects/edit", { projectEdit });
+//     })
+//     .catch(error => {
+//       next(error);
+//     });
 // });
 
-// router.post("/projects/edit/:id", (req, res, next) => {
-// 	const { name, owner, category, summary, skills, duration } = req.body;
-// 	Project.update(
-// 		{ _id: req.params.id },
-// 		{ $set: { name, owner, category, summary, skills, duration } },
-// 		{ new: true }
-// 	)
-// 		.then(project => {
-// 			res.redirect("/projects/" + req.params.id);
-// 		})
-// 		.catch(error => {
-// 			next(error);
-// 		});
-// });
+// router.post(
+//   "/projects/edit/:id",
+//   ensureLogin.ensureLoggedIn("/auth/login"),
+//   (req, res, next) => {
+//     const { name, owner, category, summary, skills, duration } = req.body;
+//     Project.update(
+//       { _id: req.user.id },
+//       { $set: { name, owner, category, summary, skills, duration } },
+//       { new: true }
+//     )
+//       .then(project => {
+//         res.redirect("/my-projects");
+//       })
+//       .catch(error => {
+//         next(error);
+//       });
+//   }
+// );
 
 //Ironhacker see all the projects
 router.get(
@@ -113,7 +118,7 @@ router.get(
   }
 );
 
-// //Inronhacker see one particular project
+//Inronhacker see one particular project
 router.get(
   "/project-detail/:id",
   ensureLogin.ensureLoggedIn("/auth/login"),
