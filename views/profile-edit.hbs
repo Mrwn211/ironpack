@@ -5,38 +5,38 @@
 
     <form action="/profile/edit" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 
-    <!-- left column -->
-    <div class="col-md-3">
-      <div class="text-center">
-        <img src="{{profileEdit.image}}" class="img-thumbnail rounded" alt="photo">
-        <h6>Upload a different photo...</h6>
-          
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="{{profileEdit.image}}" class="img-thumbnail rounded" alt="photo">
+          <h6>Upload a different photo...</h6>
+
           <input type="file" class="form-control" name="photo">
+        </div>
+        {{#if isEnterprise }}
+        <div class="text-center">
+          <a href="/my-projects" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">My projects</a>
+        </div>
+        {{/if}}
       </div>
-      {{#if isEnterprise }}
-      <div class="text-center">
-        <a href="/my-projects" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">My projects</a>
-      </div>
-      {{/if}}
-    </div>
 
 
-    <!-- edit form column -->
-    <div class="col-md-9 personal-info">
-      {{#unless isEnterprise }}
-      <div class="text-center">
-        <a href="/projects-page" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">All the
-          projects</a>
-      </div>
-      {{/unless}}
-      {{#if isEnterprise }}
-      <div class="text-center">
-        <a href="/ironhackers-page" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">All the
-          ironhackers</a>
-      </div>
-      {{/if}}
-      <h3>Personal info</h3>
-      {{#unless isEnterprise }}
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        {{#unless isEnterprise }}
+        <div class="text-center">
+          <a href="/projects-page" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">All the
+            projects</a>
+        </div>
+        {{/unless}}
+        {{#if isEnterprise }}
+        <div class="text-center">
+          <a href="/ironhackers-page" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">All the
+            ironhackers</a>
+        </div>
+        {{/if}}
+        <h3>Personal info</h3>
+        {{#unless isEnterprise }}
 
         <div class="form-group">
           <label class="col-lg-3 control-label">First name:</label>
@@ -86,46 +86,46 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Competences:</label>
           <div class="competences-container col-lg-9">
-          <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[0]" class="form-check-input" type="checkbox" id="ReactJS" value="ReactJS">
-            <label class="form-check-label" for="ReactJS">ReactJS</label>
-          </div>
-          <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[1]" class="form-check-input" type="checkbox" id="NodeJS" value="NodeJS">
-            <label class="form-check-label" for="NodeJS">NodeJS</label>
-          </div>
-          <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[2]" class="form-check-input" type="checkbox" id="HTML5" value="HTML5">
-            <label class="form-check-label" for="HTML5">HTML5</label>
-          </div>
-          <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[3]" class="form-check-input" type="checkbox" id="CSS3" value="CSS3">
-            <label class="form-check-label" for="CSS3">CSS3</label>
-          </div>
-          <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[4]" class="form-check-input" type="checkbox" id="Javascript" value="Javascript">
-            <label class="form-check-label" for="Javascript">Javascript</label>
-          </div>
-          <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[5]" class="form-check-input" type="checkbox" id="Python" value="Python">
-            <label class="form-check-label" for="Python">Python</label>
-          </div>
-           <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[6]" class="form-check-input" type="checkbox" id="VueJS" value="VueJS">
-            <label class="form-check-label" for="VueJS">VueJS</label>
-          </div> 
-           <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[7]" class="form-check-input" type="checkbox" id="UX-design" value="UX-design">
-            <label class="form-check-label" for="UX-design">UX Design</label>
-          </div> 
-          <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[8]" class="form-check-input" type="checkbox" id="Data" value="Data">
-            <label class="form-check-label" for="Data">Data</label>
-          </div>
-          <div class="form-check form-check-inline col-lg-3">
-            <input name="skills[9]" class="form-check-input" type="checkbox" id="Other" value="Other">
-            <label class="form-check-label" for="Other">Other</label>
-          </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[0]" class="form-check-input" type="checkbox" id="ReactJS" value="ReactJS">
+              <label class="form-check-label" for="ReactJS">ReactJS</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[1]" class="form-check-input" type="checkbox" id="NodeJS" value="NodeJS">
+              <label class="form-check-label" for="NodeJS">NodeJS</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[2]" class="form-check-input" type="checkbox" id="HTML5" value="HTML5">
+              <label class="form-check-label" for="HTML5">HTML5</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[3]" class="form-check-input" type="checkbox" id="CSS3" value="CSS3">
+              <label class="form-check-label" for="CSS3">CSS3</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[4]" class="form-check-input" type="checkbox" id="Javascript" value="Javascript">
+              <label class="form-check-label" for="Javascript">Javascript</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[5]" class="form-check-input" type="checkbox" id="Python" value="Python">
+              <label class="form-check-label" for="Python">Python</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[6]" class="form-check-input" type="checkbox" id="VueJS" value="VueJS">
+              <label class="form-check-label" for="VueJS">VueJS</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[7]" class="form-check-input" type="checkbox" id="UX-design" value="UX-design">
+              <label class="form-check-label" for="UX-design">UX Design</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[8]" class="form-check-input" type="checkbox" id="Data" value="Data">
+              <label class="form-check-label" for="Data">Data</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[9]" class="form-check-input" type="checkbox" id="Other" value="Other">
+              <label class="form-check-label" for="Other">Other</label>
+            </div>
           </div>
         </div>
         {{/if}}
@@ -160,7 +160,7 @@
         </div>
       </div>
 
-      </form>
+    </form>
 
   </div>
 </div>
