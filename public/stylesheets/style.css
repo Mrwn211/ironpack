@@ -262,6 +262,7 @@ table.table .avatar {
 
 .text-center img {
   height: 200;
-  width: 200; }
+  width: 200;
+  image-orientation: initial; }
 
 /*# sourceMappingURL=style.css.map */

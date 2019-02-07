@@ -35,17 +35,7 @@ router.post("/profile/edit", uploadCloud.single("photo"), (req, res, next) => {
   } = req.body;
 
   const image = req.file.url;
-  console.log(email,
-    password,
-    firstname,
-    lastname,
-    companyName,
-    // skills,
-    lastJob,
-    experiences,
-    resume,
-    linkedinProfile,
-   "req.params.id" , req.params.id)
+  
   User.update(
     { email: req.body.email },
     {
