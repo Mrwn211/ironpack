@@ -5,38 +5,38 @@
 
     <form action="/profile/edit" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 
-    <!-- left column -->
-    <div class="col-md-3">
-      <div class="text-center">
-        <img src="{{image}}" class="avatar img-circle" alt="photo">
-        <h6>Upload a different photo...</h6>
-          
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="{{image}}" class="avatar img-circle" alt="photo">
+          <h6>Upload a different photo...</h6>
+
           <input type="file" class="form-control" name="photo">
+        </div>
+        {{#if isEnterprise }}
+        <div class="text-center">
+          <a href="/my-projects" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">My projects</a>
+        </div>
+        {{/if}}
       </div>
-      {{#if isEnterprise }}
-      <div class="text-center">
-        <a href="/my-projects" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">My projects</a>
-      </div>
-      {{/if}}
-    </div>
 
 
-    <!-- edit form column -->
-    <div class="col-md-9 personal-info">
-      {{#unless isEnterprise }}
-      <div class="text-center">
-        <a href="/projects-page" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">All the
-          projects</a>
-      </div>
-      {{/unless}}
-      {{#if isEnterprise }}
-      <div class="text-center">
-        <a href="/ironhackers-page" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">All the
-          ironhackers</a>
-      </div>
-      {{/if}}
-      <h3>Personal info</h3>
-      {{#unless isEnterprise }}
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        {{#unless isEnterprise }}
+        <div class="text-center">
+          <a href="/projects-page" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">All the
+            projects</a>
+        </div>
+        {{/unless}}
+        {{#if isEnterprise }}
+        <div class="text-center">
+          <a href="/ironhackers-page" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">All the
+            ironhackers</a>
+        </div>
+        {{/if}}
+        <h3>Personal info</h3>
+        {{#unless isEnterprise }}
 
         <div class="form-group">
           <label class="col-lg-3 control-label">First name:</label>
@@ -159,7 +159,7 @@
         </div>
       </div>
 
-      </form>
+    </form>
 
   </div>
 </div>
