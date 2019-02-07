@@ -86,7 +86,12 @@
             <div class="form-group">
               <label><strong>Skills</strong></label>
               <br>
-              <input class="form-check-input" name="skills[0]" type="checkbox" id="ReactJS" value="ReactJS">
+
+              {{#each skills}}
+              <input class="form-check-input" name="skills[]" type="checkbox" id="{{_id}}" value="{{_id}}">
+              <label class="form-check-label" for="{{_id}}">{{name}}</label>
+              {{/each}}
+              {{!-- <input class="form-check-input" name="skills[0]" type="checkbox" id="ReactJS" value="ReactJS">
               <label class="form-check-label" for="ReactJS">ReactJS</label>
               <input class="form-check-input" name="skills[1]" type="checkbox" id="NodeJS" value="NodeJS">
               <label class="form-check-label" for="NodeJS">NodeJS</label>
@@ -105,7 +110,7 @@
               <input class="form-check-input" name="skills[8]" type="checkbox" id="Data" value="Data">
               <label class="form-check-label" for="Data">Data</label>
               <input class="form-check-input" name="skills[9]" type="checkbox" id="VueJS" value="VueJS">
-              <label class="form-check-label" for="Other">Other</label>
+              <label class="form-check-label" for="Other">Other</label> --}}
               <div class="form-group">
                 <label><strong>Duration</strong></label>
                 <br>

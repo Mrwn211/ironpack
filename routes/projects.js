@@ -10,35 +10,39 @@ router.get(
   ensureLogin.ensureLoggedIn("/auth/login"),
   (req, res, next) => {
     Project.find({ owner: req.user.id })
+      .catch(err => next(err))
       .then(listOfProjects => {
-        res.render("projects/my-projects", { listOfProjects });
-      })
-      .catch(error => {
-        next(error);
+        Skill.find()
+          .catch(err => next(err))
+          .then(skills => {
+            res.render("projects/my-projects", { listOfProjects, skills });
+          });
+        // res.render("projects/my-projects", { listOfProjects });
       });
   }
 );
 //Enterprise adds new projects
-router.get(
-  "/my-projects",
-  ensureLogin.ensureLoggedIn("/auth/login"),
-  (req, res) => {
-    res.render("projects/my-projects");
-  }
-);
+// router.get(
+//   "/my-projects",
+//   ensureLogin.ensureLoggedIn("/auth/login"),
+//   (req, res) => {
+//     res.render("projects/my-projects");
+//   }
+// );
 
 router.post(
   "/my-projects",
   ensureLogin.ensureLoggedIn("/auth/login"),
   (req, res, next) => {
     const { name, category, summary, skills, duration } = req.body;
+
     const newProject = new Project({
-      name: name,
+      name,
       owner: req.user._id,
-      category: category,
-      summary: summary,
-      skills: req.skills,
-      duration: duration
+      category,
+      summary,
+      skills,
+      duration
     });
     newProject
       .save()

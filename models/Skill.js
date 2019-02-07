@@ -3,23 +3,7 @@ const Schema = mongoose.Schema;
 
 const skillSchema = new Schema(
   {
-    name: [
-      {
-        type: String,
-        enum: [
-          "ReactJS",
-          "NodeJS",
-          "HTML5",
-          "CSS3",
-          "Javascript",
-          "Python",
-          "VueJS",
-          "UX-design",
-          "Data",
-          "Other"
-        ]
-      }
-    ]
+    name: String
   },
   {
     timestamps: {
