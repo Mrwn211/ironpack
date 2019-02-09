@@ -39,3 +39,8 @@ $("#editProjectModal").on("show.bs.modal", function(e) {
       // Here we catch the error and display it
     });
 });
+
+//Back to profile
+function goBack() {
+  window.history.back();
+}
