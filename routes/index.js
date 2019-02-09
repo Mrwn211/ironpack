@@ -24,9 +24,7 @@ router.get(
       if (err) return next(err);
 
       const isEnterprise = user.accountType === "enterprise";
-
-      
-      
+    
       Skill.find()
         .catch(err => next(err))
         .then(skills => {
@@ -34,12 +32,17 @@ router.get(
             return {_id: skill._id.toString(), name: skill.name};
           });
 
+          let userSkills = [];
+          if (!isEnterprise) {
+           userSkills = user.skills.map((skill) => skill.toJSON())
+          } 
+
           res.render("profile-edit", {
             skills: skills2,
             isEnterprise,
             message: req.flash("error"),
             profileEdit: user,
-            userSkills: user.skills.map((skill) => skill.toJSON())
+            userSkills: userSkills
           });
         })
       ;
