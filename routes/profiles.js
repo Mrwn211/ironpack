@@ -12,42 +12,43 @@ router.post(
   (req, res, next) => {
     const {
       email,
-      password,
       firstname,
       lastname,
       companyName,
       skills,
       lastJob,
-      experiences,
       resume,
       linkedinProfile
     } = req.body;
 
-    const image = req.file.url;
+    
+
+    let $set = {
+      email,
+      firstname,
+      lastname,
+      companyName,
+      skills,
+      lastJob,
+      resume,
+      linkedinProfile
+    };
+
+    // on met a jour l'image que si fichier envoyé
+    if (req.file) {
+      $set.image = req.file.url;
+    }
 
     User.update(
     { email: req.body.email },
       {
-        $set: {
-          email,
-          password,
-          firstname,
-          lastname,
-          companyName,
-          image,
-          skills,
-          lastJob,
-          experiences,
-          resume,
-          linkedinProfile
-        }
+        $set
       },
       { new: true }
     )
-      .then(user => {
-            res.redirect("/profile-edit", {
-              user: user
-            });
+      .then(() => {
+            res.redirect("/profile/edit"
+            );
       })
       .catch(error => {
         next(error);

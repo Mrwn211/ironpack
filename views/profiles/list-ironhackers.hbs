@@ -1,14 +1,3 @@
-{{!-- <h2>All Ironhackers</h2>
-{{#each ironhackersAll}}
-<p>Name: {{this.firstname}} {{this.lastname}}</p>
-<p>Job: {{this.lastJob}}</p>
-<p>Skills: {{this.skills}}</p>
-<div class="text-center">
-  <a href="/ironhacker-detail/{{this.id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">See
-    more</a>
-</div>
-<hr>
-{{/each}} --}}
 {{#each ironhackersAll}}
 <!-- Team member -->
 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -17,10 +6,9 @@
       <div class="frontside">
         <div class="card">
           <div class="card-body text-center">
-            <p><img class="img-fluid" src="{{this.image}}"
-                alt="card image"></p>
+            <p><i class="img-fluid" src="{{this.image}}" alt="card image"></p>
             <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
-            <p class="card-text">This is basic card with image on top, title, description and button.</p>
+            <p class="card-text">{{this.reseume}}</p>
             <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
           </div>
         </div>
@@ -29,31 +17,16 @@
         <div class="card">
           <div class="card-body text-center mt-4">
             <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
-            <p class="card-text">This is basic card with image on top, title, description and button.This is basic card
-              with image on top, title, description and button.This is basic card with image on top, title, description
-              and button.</p>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a class="social-icon text-xs-center" target="_blank" href="{{this.linkedinProfile}}">
-                  <img src="https://res.cloudinary.com/mrwn211/image/upload/v1549572009/uploads/linkedin-button.png"></img>
-                </a>
-              </li>
-              {{!-- <li class="list-inline-item">
-                <a class="social-icon text-xs-center" target="_blank" href="#">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="social-icon text-xs-center" target="_blank" href="#">
-                  <i class="fa fa-skype"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="social-icon text-xs-center" target="_blank" href="#">
-                  <i class="fa fa-google"></i>
-                </a>
-              </li>
-            </ul> --}}
+            {{#each skills}}
+            <ul class="card-body text-center col-6">
+              <li class="col-2"><i class="glyphicon glyphicon-check"></i>{{this.skills.name}}</li>
+            </ul>
+            {{/each}}
+            <p class="card-text">
+              <a class="social-icon text-xs-center" target="_blank" href="{{this.linkedinProfile}}">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </p>
           </div>
         </div>
       </div>
