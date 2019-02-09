@@ -28,9 +28,9 @@ router.get("/signup", (req, res, next) => {
 
 router.post("/signup", (req, res, next) => {
   const email = req.body.email;
+  const username = req.body.username;
   const password = req.body.password;
   const accountType = req.body.accountType;
-  console.log("accountType", accountType);
   if (email === "" || password === "") {
     res.render("auth/signup", { message: "Indicate email and password" });
     return;
@@ -48,7 +48,8 @@ router.post("/signup", (req, res, next) => {
     const newUser = new User({
       email,
       password: hashPass,
-      accountType
+      accountType,
+      username
     });
 
     newUser
