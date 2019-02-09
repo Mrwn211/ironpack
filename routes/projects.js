@@ -10,35 +10,39 @@ router.get(
   ensureLogin.ensureLoggedIn("/auth/login"),
   (req, res, next) => {
     Project.find({ owner: req.user.id })
+      .catch(err => next(err))
       .then(listOfProjects => {
-        res.render("projects/my-projects", { listOfProjects });
-      })
-      .catch(error => {
-        next(error);
+        Skill.find()
+          .catch(err => next(err))
+          .then(skills => {
+            res.render("projects/my-projects", { listOfProjects, skills });
+          });
+        // res.render("projects/my-projects", { listOfProjects });
       });
   }
 );
 //Enterprise adds new projects
-router.get(
-  "/my-projects",
-  ensureLogin.ensureLoggedIn("/auth/login"),
-  (req, res) => {
-    res.render("projects/my-projects");
-  }
-);
+// router.get(
+//   "/my-projects",
+//   ensureLogin.ensureLoggedIn("/auth/login"),
+//   (req, res) => {
+//     res.render("projects/my-projects");
+//   }
+// );
 
 router.post(
   "/my-projects",
   ensureLogin.ensureLoggedIn("/auth/login"),
   (req, res, next) => {
     const { name, category, summary, skills, duration } = req.body;
+
     const newProject = new Project({
-      name: name,
+      name,
       owner: req.user._id,
-      category: category,
-      summary: summary,
-      skills: req.skills,
-      duration: duration
+      category,
+      summary,
+      skills,
+      duration
     });
     newProject
       .save()
@@ -68,31 +72,36 @@ router.post(
   }
 );
 
-// //Enterprise edit Projects
-// router.get("/projects/edit/:id", (req, res, next) => {
-// 	Project.findOne({ _id: req.params.id })
-// 		.then(projectEdit => {
-// 			res.render("projects/edit", { projectEdit });
-// 		})
-// 		.catch(error => {
-// 			next(error);
-// 		});
-// });
+// Enterprise edits Projects
+router.get("/my-projects/:id", (req, res, next) => {
+  let projectIdEdit = req.params.id;
+  Project.findOne({ _id: projectIdEdit })
+    .then(project => {
+      res.json(project);
+    })
+    .catch(error => {
+      next(error);
+    });
+});
 
-// router.post("/projects/edit/:id", (req, res, next) => {
-// 	const { name, owner, category, summary, skills, duration } = req.body;
-// 	Project.update(
-// 		{ _id: req.params.id },
-// 		{ $set: { name, owner, category, summary, skills, duration } },
-// 		{ new: true }
-// 	)
-// 		.then(project => {
-// 			res.redirect("/projects/" + req.params.id);
-// 		})
-// 		.catch(error => {
-// 			next(error);
-// 		});
-// });
+// router.post(
+//   "/projects/edit/:id",
+//   ensureLogin.ensureLoggedIn("/auth/login"),
+//   (req, res, next) => {
+//     const { name, owner, category, summary, skills, duration } = req.body;
+//     Project.update(
+//       { _id: req.user.id },
+//       { $set: { name, owner, category, summary, skills, duration } },
+//       { new: true }
+//     )
+//       .then(project => {
+//         res.redirect("/my-projects");
+//       })
+//       .catch(error => {
+//         next(error);
+//       });
+//   }
+// );
 
 //Ironhacker see all the projects
 router.get(
@@ -109,7 +118,7 @@ router.get(
   }
 );
 
-// //Inronhacker see one particular project
+//Inronhacker see one particular project
 router.get(
   "/project-detail/:id",
   ensureLogin.ensureLoggedIn("/auth/login"),
