@@ -73,16 +73,16 @@ router.post(
 );
 
 // Enterprise edits Projects
-// router.get("/projects/edit/:id", (req, res, next) => {
-//   let projectIdEdit = req.params.id;
-//   Project.findOne({ _id: projectIdEdit })
-//     .then(projectEdit => {
-//       res.render("projects/edit", { projectEdit });
-//     })
-//     .catch(error => {
-//       next(error);
-//     });
-// });
+router.get("/my-projects/:id", (req, res, next) => {
+  let projectIdEdit = req.params.id;
+  Project.findOne({ _id: projectIdEdit })
+    .then(project => {
+      res.json(project);
+    })
+    .catch(error => {
+      next(error);
+    });
+});
 
 // router.post(
 //   "/projects/edit/:id",

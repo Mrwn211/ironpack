@@ -14,8 +14,14 @@ $("#deleteProjectModal").on("show.bs.modal", function(e) {
 });
 
 //Edit Projects
-// $("#editProjectModal").on("show.bs.modal", function(e) {
-//   let projectIdEdit = $(e.relatedTarget).data("projectidedit");
-//   let $form = $(e.currentTarget).find("form");
-//   $form.attr("action" + projectIdEdit);
-// });
+$("#editProjectModal").on("show.bs.modal", function(e) {
+  let projectIdEdit = $(e.relatedTarget).data("projectidedit");
+  axios
+    .get(`/my-projects/${projectIdEdit}`)
+    .then(res => {
+      console.log("res", res);
+    })
+    .catch(err => {
+      // Here we catch the error and display it
+    });
+});
