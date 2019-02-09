@@ -1,3 +1,4 @@
+<button onclick="goBack()" class="btn btn-default">Back to Profile</button>
 <div class="container">
   <div class="table-wrapper">
     <div class="table-title">
@@ -34,7 +35,7 @@
             <td>{{this.name}}</td>
             <td>{{this.category}}</td>
             <td>{{this.summary}}</td>
-            <td>{{this.skills}}</td>
+            <td>{{#each this.skills}} <div>{{name}}</div> {{/each}}</td>
             <td>{{this.duration}}</td>
             <td>
               <a href="#editProjectModal" class="edit" data-toggle="modal" data-projectidedit="{{this.id}}"><i class="material-icons"
@@ -139,7 +140,7 @@
 <div id="editProjectModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="/my-projects/projectidedit" method="POST">
+      <form action="/my-projects/" method="POST">
         <div class="modal-header">
           <h4 class="modal-title">Edit Project</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -148,59 +149,63 @@
           <div class="form-group">
             <label><strong>Name</strong></label>
             <br>
-            <input name="name" type="text" class="form-control" required>
+            <input type="text" name="name" id="name" class="form-control" required>
           </div>
           <div class="form-group">
             <label><strong>Category</strong></label>
             <br>
-            <input name="category[0]" class="form-check-input" type="checkbox" id="frontEnd" value="Front-end">
-            <label class="form-check-label" for="frontEnd">Front-ends</label>
-            <input name="category[1]" class="form-check-input" type="checkbox" id="backEnd" value="Back-end">
-            <label class="form-check-label" for="backEnd">Back-end</label>
-            <input name="category[2]" class="form-check-input" type="checkbox" id="fullStack" value="FullStack">
-            <label class="form-check-label" for="fullStack">FullStack</label>
-            <input name="category[3]" class="form-check-input" type="checkbox" id="ux" value="UX-design">
-            <label class="form-check-label" for="ux">UX design</label>
-            <input name="category[4]" class="form-check-input" type="checkbox" id="data" value="Data-Analyst">
-            <label class="form-check-label" for="data">Data Analyst</label>
+            <input name="category" class="form-check-input" type="checkbox" id="Front-end" value="Front-end">
+            <label class="form-check-label" for="Front-end">Front-end</label>
+            <input name="category" class="form-check-input" type="checkbox" id="Back-end" value="Back-end">
+            <label class="form-check-label" for="Back-end">Back-end</label>
+            <input name="category" class="form-check-input" type="checkbox" id="FullStack" value="FullStack">
+            <label class="form-check-label" for="FullStack">FullStack</label>
+            <input name="category" class="form-check-input" type="checkbox" id="UX-design" value="UX-design">
+            <label class="form-check-label" for="UX-design">UX-design</label>
+            <input name="category" class="form-check-input" type="checkbox" id="Data-Analyst" value="Data-Analyst">
+            <label class="form-check-label" for="Data-Analyst">Data-Analyst</label>
             <div class="form-group">
               <label><strong>Summary</strong></label>
               <br>
-              <textarea class="form-control" required></textarea>
+              <textarea name="summary" id="summary" class="form-control" required></textarea>
             </div>
             <div class="form-group">
-              <label>Skills</label>
+              <label><strong>Skills</strong></label>
               <br>
-              <input name="skills[0]" class="form-check-input" type="checkbox" id="ReactJS" value="ReactJS">
+              {{#each skills}}
+              <input class="form-check-input" name="skills" type="checkbox" id="{{_id}}" value="{{_id}}">
+              <label class="form-check-label" for="{{_id}}">{{name}}</label>
+              {{/each}}
+              {{!-- <input name="skills" class="form-check-input" type="checkbox" id="ReactJS" value="ReactJS">
               <label class="form-check-label" for="ReactJS">ReactJS</label>
-              <input name="skills[1]" class="form-check-input" type="checkbox" id="NodeJS" value="NodeJS">
+              <input name="skills" class="form-check-input" type="checkbox" id="NodeJS" value="NodeJS">
               <label class="form-check-label" for="NodeJS">NodeJS</label>
-              <input name="skills[2]" class="form-check-input" type="checkbox" id="HTML5" value=".HTML5">
+              <input name="skills" class="form-check-input" type="checkbox" id="HTML5" value="HTML5">
               <label class="form-check-label" for="HTML5">HTML5</label>
-              <input name="skills[3]" class="form-check-input" type="checkbox" id="CSS3" value=".CSS3">
+              <input name="skills" class="form-check-input" type="checkbox" id="CSS3" value="CSS3">
               <label class="form-check-label" for="CSS3">CSS3</label>
-              <input name="skills[4]" class="form-check-input" type="checkbox" id="Javascript" value=".Javascript">
+              <input name="skills" class="form-check-input" type="checkbox" id="Javascript" value="Javascript">
               <label class="form-check-label" for="Javascript">Javascript</label>
-              <input name="skills[5]" class="form-check-input" type="checkbox" id="Python" value=".Python">
+              <input name="skills" class="form-check-input" type="checkbox" id="Python" value="Python">
               <label class="form-check-label" for="Python">Python</label>
-              <input name="skills[6]" class="form-check-input" type="checkbox" id="VueJS" value=".VueJS">
+              <input name="skills" class="form-check-input" type="checkbox" id="VueJS" value="VueJS">
               <label class="form-check-label" for="Data">VueJS</label>
-              <input name="skills[7]" class="form-check-input" type="checkbox" id="UX-design" value=".UX-design">
+              <input name="skills" class="form-check-input" type="checkbox" id="UX-design" value="UX-design">
               <label class="form-check-label" for="UX-design">UX Design</label>
-              <input name="skills[8]" class="form-check-input" type="checkbox" id="Data" value=".Data">
+              <input name="skills" class="form-check-input" type="checkbox" id="Data" value="Data">
               <label class="form-check-label" for="Data">Data</label>
-              <input name="skills[9]" class="form-check-input" type="checkbox" id="Other" value=".Other">
+              <input name="skills" class="form-check-input" type="checkbox" id="Other" value="Other">
               <label class="form-check-label" for="Other">Other</label>
-              <div class="form-group">
+              <div class="form-group"> --}}
                 <label><strong>Duration</strong></label>
                 <br>
-                <input class="form-check-input" name="duration[0]" type="checkbox" id="1month" value="Less than a month">
+                <input class="form-check-input" name="duration" type="checkbox" id="1month" value="Less than a month">
                 <label class="form-check-label" for="1month">Less than 1 month</label>
-                <input class="form-check-input" name="duration[1]" type="checkbox" id="3months" value="Up to 3 months">
+                <input class="form-check-input" name="duration" type="checkbox" id="3months" value="Up to 3 months">
                 <label class="form-check-label" for="3months">Up to 3 months</label>
-                <input class="form-check-input" name="duration[2]" type="checkbox" id="6months" value="From 3 to 6 months">
+                <input class="form-check-input" name="duration" type="checkbox" id="6months" value="From 3 to 6 months">
                 <label class="form-check-label" for="6months">From 3 to 6 months</label>
-                <input class="form-check-input" name="duration[3]" type="checkbox" id="moreThan6months" value="More than 6 months">
+                <input class="form-check-input" name="duration" type="checkbox" id="moreThan6months" value="More than 6 months">
                 <label class="form-check-label" for="moreThan6months">More than 6 months</label>
               </div>
             </div>

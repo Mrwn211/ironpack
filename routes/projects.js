@@ -10,6 +10,7 @@ router.get(
   ensureLogin.ensureLoggedIn("/auth/login"),
   (req, res, next) => {
     Project.find({ owner: req.user.id })
+      .populate("skills")
       .catch(err => next(err))
       .then(listOfProjects => {
         Skill.find()
@@ -84,24 +85,25 @@ router.get("/my-projects/:id", (req, res, next) => {
     });
 });
 
-// router.post(
-//   "/projects/edit/:id",
-//   ensureLogin.ensureLoggedIn("/auth/login"),
-//   (req, res, next) => {
-//     const { name, owner, category, summary, skills, duration } = req.body;
-//     Project.update(
-//       { _id: req.user.id },
-//       { $set: { name, owner, category, summary, skills, duration } },
-//       { new: true }
-//     )
-//       .then(project => {
-//         res.redirect("/my-projects");
-//       })
-//       .catch(error => {
-//         next(error);
-//       });
-//   }
-// );
+router.post(
+  "/my-projects/:id",
+  ensureLogin.ensureLoggedIn("/auth/login"),
+  (req, res, next) => {
+    let projectIdEdit = req.params.id;
+    const { name, category, summary, skills, duration } = req.body;
+    Project.update(
+      { _id: projectIdEdit },
+      { $set: { name, category, summary, skills, duration } },
+      { new: true }
+    )
+      .then(project => {
+        res.redirect("/my-projects");
+      })
+      .catch(error => {
+        next(error);
+      });
+  }
+);
 
 //Ironhacker see all the projects
 router.get(
