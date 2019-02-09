@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Skill = require("../models/Skill");
 const ensureLogin = require("connect-ensure-login");
 const uploadCloud = require("../config/cloudinary.js");
 
@@ -26,7 +27,7 @@ router.post(
     const image = req.file.url;
 
     User.update(
-    { email: req.body.email },
+      { email: req.body.email },
       {
         $set: {
           email,
@@ -45,9 +46,9 @@ router.post(
       { new: true }
     )
       .then(user => {
-            res.redirect("/profile-edit", {
-              user: user
-            });
+        res.redirect("/profile-edit", {
+          user: user
+        });
       })
       .catch(error => {
         next(error);
@@ -60,13 +61,13 @@ router.get(
   "/ironhackers-page",
   ensureLogin.ensureLoggedIn("/auth/login"),
   (req, res, next) => {
-    User.find()
-      .then(ironhackersAll => {
-        res.render("profiles/list-ironhackers", { ironhackersAll });
-      })
-      .catch(error => {
-        next(error);
-      });
+    User.find().then(ironhackersAll => {
+      Skill.find()
+        .catch(err => next(err))
+        .then(skills => {
+          res.render("profiles/list-ironhackers", { ironhackersAll, skills });
+        });
+    });
   }
 );
 

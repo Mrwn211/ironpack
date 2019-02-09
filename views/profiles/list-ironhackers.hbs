@@ -1,63 +1,117 @@
-{{!-- <h2>All Ironhackers</h2>
-{{#each ironhackersAll}}
-<p>Name: {{this.firstname}} {{this.lastname}}</p>
-<p>Job: {{this.lastJob}}</p>
-<p>Skills: {{this.skills}}</p>
-<div class="text-center">
-  <a href="/ironhacker-detail/{{this.id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">See
-    more</a>
-</div>
-<hr>
-{{/each}} --}}
-{{#each ironhackersAll}}
-<!-- Team member -->
-<div class="col-xs-12 col-sm-6 col-md-4">
-  <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-    <div class="mainflip">
-      <div class="frontside">
-        <div class="card">
-          <div class="card-body text-center">
-            <p><img class="img-fluid" src="{{this.image}}"
-                alt="card image"></p>
-            <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
-            <p class="card-text">This is basic card with image on top, title, description and button.</p>
-            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="backside">
-        <div class="card">
-          <div class="card-body text-center mt-4">
-            <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
-            <p class="card-text">This is basic card with image on top, title, description and button.This is basic card
-              with image on top, title, description and button.This is basic card with image on top, title, description
-              and button.</p>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a class="social-icon text-xs-center" target="_blank" href="{{this.linkedinProfile}}">
-                  <img src="https://res.cloudinary.com/mrwn211/image/upload/v1549572009/uploads/linkedin-button.png"></img>
-                </a>
-              </li>
-              {{!-- <li class="list-inline-item">
-                <a class="social-icon text-xs-center" target="_blank" href="#">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="social-icon text-xs-center" target="_blank" href="#">
-                  <i class="fa fa-skype"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="social-icon text-xs-center" target="_blank" href="#">
-                  <i class="fa fa-google"></i>
-                </a>
-              </li>
-            </ul> --}}
-          </div>
-        </div>
-      </div>
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
+
+    <!-- Top Menu Items -->
+    <ul class="
+        nav navbar-right top-nav">
+      <li><a href="#">Edit Project</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav side-nav side-text">
+        <h2>Skills</h2>
+        {{!-- <div>
+          <input name="category" class="sidebar-text" type="checkbox" id="ReactJS" value="ReactJS">
+          <label for="ReactJS">ReactJS</label>
+        </div>
+        <div>
+          <input name="category" class="sidebar-text" type="checkbox" id="ReactJS" value="ReactJS">
+          <label for="ReactJS">ReactJS</label>
+        </div> --}}
+
+        {{#each skills}}
+        <input class="" name="skills" type="checkbox" id="{{this._id}}" value="{{this._id}}">
+        <label class="" for="{{this._id}}">{{this.name}}</label>
+        {{/each}}
+
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main">
+        <div class="col-sm-12 col-md-12 well">
+          {{#each ironhackersAll}}
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <p><img class="img-fluid" src="{{this.image}}" alt="card image"></p>
+                      <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
+                      <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
+                      <p class="card-text">This is basic card with image on top, title, description and button.This is
+                        basic card
+                        with image on top, title, description and button.This is basic card with image on top, title,
+                        description
+                        and button.</p>
+                      <ul class="list-inline">
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank" href="{{this.linkedinProfile}}">
+                            <img src="https://res.cloudinary.com/mrwn211/image/upload/v1549572009/uploads/linkedin-button.png"></img>
+                          </a>
+                        </li>
+                        {{!-- <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank" href="#">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank" href="#">
+                            <i class="fa fa-skype"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank" href="#">
+                            <i class="fa fa-google"></i>
+                          </a>
+                        </li>
+                      </ul> --}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
   </div>
-</div>
-{{/each}}
+  <!-- /#page-wrapper -->
+</div><!-- /#wrapper -->
