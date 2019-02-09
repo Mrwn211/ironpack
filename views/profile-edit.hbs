@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Edit Profile</h1>
+  <h1>Hi, {{profileEdit.firstname}} edit your profile</h1>
   <hr>
   <div class="row">
 
@@ -37,7 +37,6 @@
         {{/if}}
         <h3>Personal info</h3>
         {{#unless isEnterprise }}
-
         <div class="form-group">
           <label class="col-lg-3 control-label">First name:</label>
           <div class="col-lg-8">
@@ -56,14 +55,70 @@
             <input name="lastJob" class="form-control" type="text" value="{{profileEdit.lastJob}}">
           </div>
         </div>
+                {{!-- <div class="form-group">
+           <label class="col-lg-3 control-label">Competences:</label>
+              {{#each skills}}
+              <input class="form-check-input" name="skills[]" type="checkbox" id="{{_id}}" value="{{_id}}">
+              <label class="form-check-label" for="{{_id}}">{{name}}</label>
+              {{/each}}
+        </div> --}}
         <div class="form-group">
-          <label class="col-lg-3 control-label">Experiences:</label>
-          <div class="col-lg-8">
-            <input name="experiences" class="form-control" type="text" value="{{profileEdit.experiences}}">
+          <label class="col-lg-3 control-label">Competences:</label>
+
+          <div class="competences-container col-lg-9">
+            {{#each skills}}
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[]" class="form-check-input" type="checkbox" id="{{_id}}" value="{{_id}}" {{#ifIn this._id ../userSkills}}checked{{/ifIn}}>
+              <label class="form-check-label" for="{{_id}}">{{name}}</label>
+            </div>
+            {{/each}}
+            {{!-- <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[1]" class="form-check-input" type="checkbox" id="NodeJS" value="NodeJS">
+              <label class="form-check-label" for="NodeJS">NodeJS</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[2]" class="form-check-input" type="checkbox" id="HTML5" value="HTML5">
+              <label class="form-check-label" for="HTML5">HTML5</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[3]" class="form-check-input" type="checkbox" id="CSS3" value="CSS3">
+              <label class="form-check-label" for="CSS3">CSS3</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[4]" class="form-check-input" type="checkbox" id="Javascript" value="Javascript">
+              <label class="form-check-label" for="Javascript">Javascript</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[5]" class="form-check-input" type="checkbox" id="Python" value="Python">
+              <label class="form-check-label" for="Python">Python</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[6]" class="form-check-input" type="checkbox" id="VueJS" value="VueJS">
+              <label class="form-check-label" for="VueJS">VueJS</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[7]" class="form-check-input" type="checkbox" id="UX-design" value="UX-design">
+              <label class="form-check-label" for="UX-design">UX Design</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[8]" class="form-check-input" type="checkbox" id="Data" value="Data">
+              <label class="form-check-label" for="Data">Data</label>
+            </div>
+            <div class="form-check form-check-inline col-lg-3">
+              <input name="skills[9]" class="form-check-input" type="checkbox" id="Other" value="Other">
+              <label class="form-check-label" for="Other">Other</label>
+            </div>  --}}
           </div>
         </div>
+        {{!-- <div class="form-group">
+          <label class="col-lg-3 control-label">Competences:</label>
+          {{#each skills}}
+          <input class="form-check-input" name="skills[]" type="checkbox" id="{{_id}}" value="{{_id}}">
+          <label class="form-check-label" for="{{_id}}">{{name}}</label>
+          {{/each}}
+        </div> --}}
         <div class="form-group">
-          <label class="col-lg-3 control-label">Resume:</label>
+          <label class="col-lg-3 control-label">Catch phrase:</label>
           <div class="col-lg-8">
             <input name="resume" class="form-control" type="text" value="{{profileEdit.resume}}">
           </div>
@@ -71,7 +126,8 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Profile LinkedIn:</label>
           <div class="col-lg-8">
-            <input name="linkedinProfile" class="form-control" type="text" value="{{profileEdit.linkedinProfile}}">
+            <input name="linkedinProfile" class="form-control" type="text" value="{{profileEdit.linkedinProfile}}"
+              required>
           </div>
         </div>
         {{/unless}}
@@ -83,7 +139,14 @@
           </div>
         </div>
         {{else}}
-        <div class="form-group">
+        {{!-- <div class="form-group">
+           <label class="col-lg-3 control-label">Competences:</label>
+              {{#each skills}}
+              <input class="form-check-input" name="skills[]" type="checkbox" id="{{_id}}" value="{{_id}}">
+              <label class="form-check-label" for="{{_id}}">{{name}}</label>
+              {{/each}}
+        </div> --}}
+        {{!-- <div class="form-group">
           <label class="col-lg-3 control-label">Competences:</label>
           <div class="competences-container col-lg-9">
           <div class="form-check form-check-inline col-lg-3">
@@ -125,9 +188,9 @@
           <div class="form-check form-check-inline col-lg-3">
             <input name="skills[9]" class="form-check-input" type="checkbox" id="Other" value="Other">
             <label class="form-check-label" for="Other">Other</label>
+          </div> 
           </div>
-          </div>
-        </div>
+        </div>--}}
         {{/if}}
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>

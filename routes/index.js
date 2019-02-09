@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ensureLogin = require("connect-ensure-login");
 const User = require("../models/User");
+const Skill = require("../models/Skill");
 const uploadCloud = require("../config/cloudinary.js");
 
 /* GET home page */
@@ -24,11 +25,24 @@ router.get(
 
       const isEnterprise = user.accountType === "enterprise";
 
-      res.render("profile-edit", {
-        isEnterprise,
-        message: req.flash("error"),
-        profileEdit: user
-      });
+      
+      
+      Skill.find()
+        .catch(err => next(err))
+        .then(skills => {
+          let skills2 = skills.map((skill) => {
+            return {_id: skill._id.toString(), name: skill.name};
+          });
+
+          res.render("profile-edit", {
+            skills: skills2,
+            isEnterprise,
+            message: req.flash("error"),
+            profileEdit: user,
+            userSkills: user.skills.map((skill) => skill.toJSON())
+          });
+        })
+      ;
     });
   }
 );
