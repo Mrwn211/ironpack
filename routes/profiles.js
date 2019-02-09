@@ -21,8 +21,6 @@ router.post(
       linkedinProfile
     } = req.body;
 
-    
-
     let $set = {
       email,
       firstname,
@@ -40,15 +38,14 @@ router.post(
     }
 
     User.update(
-    { email: req.body.email },
+      { email: req.body.email },
       {
         $set
       },
       { new: true }
     )
       .then(() => {
-            res.redirect("/profile/edit"
-            );
+        res.redirect("/profile/edit");
       })
       .catch(error => {
         next(error);
@@ -61,9 +58,20 @@ router.get(
   "/ironhackers-page",
   ensureLogin.ensureLoggedIn("/auth/login"),
   (req, res, next) => {
-    User.find()
+    User.find({
+      accountType: "ironhacker"
+    })
+
+      .populate("skills")
       .then(ironhackersAll => {
-        res.render("profiles/list-ironhackers", { ironhackersAll });
+        ironhackersAll = ironhackersAll.map(ironhacker => {
+          ironhacker.skills = ironhacker.skills.map(skill => skill.toJSON());
+          ironhacker.image;
+          return ironhacker;
+        });
+        res.render("profiles/list-ironhackers", { 
+          ironhackersAll,
+         });
       })
       .catch(error => {
         next(error);

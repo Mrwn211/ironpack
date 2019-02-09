@@ -6,27 +6,25 @@
       <div class="frontside">
         <div class="card">
           <div class="card-body text-center">
-            <p><i class="img-fluid" src="{{this.image}}" alt="card image"></p>
+            <p><img class="img-fluid" src="{{this.image}}" alt="card image" /></p>
             <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
-            <p class="card-text">{{this.reseume}}</p>
+            <p class="card-text">{{this.resume}}</p>
             <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
           </div>
         </div>
       </div>
       <div class="backside">
         <div class="card">
-          <div class="card-body text-center mt-4">
+          <div class="card-body text-center">
             <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
             {{#each skills}}
-            <ul class="card-body text-center col-6">
-              <li class="col-2"><i class="glyphicon glyphicon-check"></i>{{this.skills.name}}</li>
+            <ul class="fa-ul">
+            <li><i class="fa-li fa fa-check-square"></i>{{this.name}}</li>
             </ul>
             {{/each}}
-            <p class="card-text">
-              <a class="social-icon text-xs-center" target="_blank" href="{{this.linkedinProfile}}">
-                <i class="fab fa-linkedin"></i>
+              <a class="social-icon text-center btn" target="_blank" href="{{this.linkedinProfile}}">
+                <i class="fa fa-linkedin"></i>
               </a>
-            </p>
           </div>
         </div>
       </div>
