@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Skill = require("../models/Skill");
 const ensureLogin = require("connect-ensure-login");
 const uploadCloud = require("../config/cloudinary.js");
 
@@ -69,13 +70,19 @@ router.get(
           ironhacker.image;
           return ironhacker;
         });
-        res.render("profiles/list-ironhackers", { 
-          ironhackersAll,
-         });
+            
+        Skill.find()
+          .catch(err => next(err))
+          .then(skills => {
+
+            res.render("profiles/list-ironhackers", {
+              ironhackersAll, skills
+            });
+          });
       })
       .catch(error => {
         next(error);
-      });
+    });
   }
 );
 
