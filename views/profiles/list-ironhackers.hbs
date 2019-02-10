@@ -29,21 +29,15 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav side-text">
-        <h2>Skills</h2>
-        {{!-- <div>
-          <input name="category" class="sidebar-text" type="checkbox" id="ReactJS" value="ReactJS">
-          <label for="ReactJS">ReactJS</label>
+        <div id="filters">
+          <h2>Skills</h2>
+          {{#each skills}}
+          <div>
+            <input class="skills" name="skills" type="checkbox" id="{{this._id}}" value="{{this._id}}">
+            <label class="skills" for="{{this._id}}">{{this.name}}</label>
+          </div>
+          {{/each}}
         </div>
-        <div>
-          <input name="category" class="sidebar-text" type="checkbox" id="ReactJS" value="ReactJS">
-          <label for="ReactJS">ReactJS</label>
-        </div> --}}
-
-        {{#each skills}}
-        <input class="" name="skills" type="checkbox" id="{{this._id}}" value="{{this._id}}">
-        <label class="" for="{{this._id}}">{{this.name}}</label>
-        {{/each}}
-
       </ul>
     </div>
     <!-- /.navbar-collapse -->

@@ -36,7 +36,7 @@ $("#editProjectModal").on("show.bs.modal", function(e) {
       });
     })
     .catch(err => {
-      // Here we catch the error and display it
+      console.log(err);
     });
 });
 
@@ -64,4 +64,20 @@ $(function() {
       .removeClass("fa-angle-down")
       .addClass("fa-angle-right");
   });
+});
+
+//Sidebar filters
+// $("#filters :checkbox").click(function() {
+//   $(".card").hide();
+//   $("#filters :checkbox:checked").each(function() {
+//     $("." + $(this).val()).show();
+//   });
+// });
+
+$("input:checkbox").on("change", function() {
+  var a = $("input:checkbox:checked")
+    .map(function() {
+      return $(this).val();
+    })
+    .get();
 });
