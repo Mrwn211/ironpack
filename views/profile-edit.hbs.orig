@@ -69,7 +69,7 @@
           {{/each}}
         </div> --}}
 =======
->>>>>>> 46687cc4f7ae90b8cc392c329091892f7e553868
+>>>>>>> 25e163ce63099f7bd46547f144ae3ae7f1077015
         <div class="form-group">
           <label class="col-lg-3 control-label">Competences:</label>
 
@@ -124,7 +124,7 @@
               <label class="form-check-label" for="{{_id}}">{{name}}</label>
             </div>
             {{/each}}
->>>>>>> 46687cc4f7ae90b8cc392c329091892f7e553868
+>>>>>>> 25e163ce63099f7bd46547f144ae3ae7f1077015
           </div>
         </div>
         <div class="form-group">
@@ -203,7 +203,7 @@
           </div>
         </div>--}}
 =======
->>>>>>> 46687cc4f7ae90b8cc392c329091892f7e553868
+>>>>>>> 25e163ce63099f7bd46547f144ae3ae7f1077015
         {{/if}}
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
