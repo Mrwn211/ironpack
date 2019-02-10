@@ -16,13 +16,13 @@
     <!-- Top Menu Items -->
     <ul class="
         nav navbar-right top-nav">
-      <li><a href="#">Edit Project</a></li>
+      <li id="see-Project"><a href="/my-projects">Edit Project</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+          <li><a href="/profile/edit"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
           <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+          <li><a href="/"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -33,8 +33,8 @@
           <h2>Skills</h2>
           {{#each skills}}
           <div>
-            <input class="skills" name="skills" type="checkbox" id="{{this._id}}" value="{{this._id}}">
-            <label class="skills" for="{{this._id}}">{{this.name}}</label>
+            <input class="skills typo-text" name="skills" type="checkbox" id="{{this._id}}" value="{{this._id}}">
+            <label class="skills typo-text" for="{{this._id}}">{{this.name}}</label>
           </div>
           {{/each}}
         </div>
@@ -69,7 +69,7 @@
                       <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
                       {{#each skills}}
                       <ul class="fa-ul">
-                        <li><i class="fa-li fa fa-check-square"></i>{{this.name}}</li>
+                        <li><i class="fa-li fa fa-check"></i>{{this.name}}</li>
                       </ul>
                       {{/each}}
                       <a class="social-icon text-center btn" target="_blank" href="{{this.linkedinProfile}}">

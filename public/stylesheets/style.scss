@@ -347,7 +347,8 @@ section .section-title {
 .backside {
   position: absolute;
   top: 0;
-	left: 0; right:0;
+  left: 0;
+  right: 0;
   background: white;
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
@@ -545,5 +546,11 @@ section .section-title {
 
 .side-text {
   color: #fff;
-  padding-left: 15px;
+  padding-left: 25px;
+}
+
+.typo-text {
+  font-family: "Lucida Grande", Courier, monospace;
+  font-size: 15px;
+  font-weight: 200;
 }

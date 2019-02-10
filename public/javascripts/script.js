@@ -67,17 +67,10 @@ $(function() {
 });
 
 //Sidebar filters
-// $("#filters :checkbox").click(function() {
-//   $(".card").hide();
-//   $("#filters :checkbox:checked").each(function() {
-//     $("." + $(this).val()).show();
-//   });
-// });
-
-$("input:checkbox").on("change", function() {
-  var a = $("input:checkbox:checked")
-    .map(function() {
-      return $(this).val();
-    })
-    .get();
+$("#filters :checkbox").click(function() {
+  $(".card").hide();
+  $("#filters :checkbox:checked").each(function() {
+    $(".card" + $(this).val()).show();
+  });
 });
+
