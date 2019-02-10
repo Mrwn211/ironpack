@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Hi, {{profileEdit.firstname}} edit your profile</h1>
+  <h1>Hi, {{profileEdit.username}} edit your profile</h1>
   <hr>
   <div class="row">
 
@@ -8,7 +8,12 @@
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
+          {{#if profileEdit.image}}
           <img src="{{profileEdit.image}}" class="img-thumbnail rounded" alt="photo">
+          {{else}}
+          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+            class="img-thumbnail rounded" alt="photo">
+          {{/if}}
           <h6>Upload a different photo...</h6>
 
           <input type="file" class="form-control" name="photo">
@@ -126,8 +131,8 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Profile LinkedIn:</label>
           <div class="col-lg-8">
-            <input name="linkedinProfile" class="form-control" type="text" value="{{profileEdit.linkedinProfile}}"
-              required>
+            <input name="linkedinProfile" class="form-control" type="url" value="{{profileEdit.linkedinProfile}}"
+              placeholder="https://www.linkedin.com " required>
           </div>
         </div>
         {{/unless}}
@@ -222,9 +227,7 @@
           </div>
         </div>
       </div>
-
     </form>
-
   </div>
 </div>
 <hr>
