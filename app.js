@@ -71,7 +71,7 @@ hbs.registerHelper('ifIn', function(elem, list, options) {
 });
 
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title = "Ironpack - Choose your stack, join the pack !";
 
 // Enable authentication using session + passport
 app.use(
