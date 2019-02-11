@@ -66,15 +66,29 @@ $(function() {
   });
 });
 
-//Sidebar filters
+//Sidebar filters ironhackers
 $("#filters :checkbox").click(function() {
   $(".ironhacker-item").hide();
   $("#filters :checkbox:checked").each(function() {
-    $(
-      ".skill-item[data-skill=" + $(this).val() + "]"
-      // ".category-item[data-category=" + $(this).val() + "]"
-    )
+    $(".skill-item[data-skill=" + $(this).val() + "]")
       .parents(".ironhacker-item")
+      .show();
+  });
+  //si rien coché, on affiche tout
+});
+
+//Sidebar filters projects
+$("#filters :checkbox").click(function() {
+  $(".project-item").hide();
+  $("#filters :checkbox:checked").each(function() {
+    $(
+      "p.category-item[data-category=" +
+        $(this).val() +
+        "], .skill-item-project[data-skill-project=" +
+        $(this).val() +
+        "]"
+    )
+      .parents(".project-item")
       .show();
   });
   //si rien coché, on affiche tout
