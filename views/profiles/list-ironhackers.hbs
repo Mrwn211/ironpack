@@ -42,15 +42,15 @@
     </div>
     <!-- /.navbar-collapse -->
   </nav>
-{{!-- Ironhackers cards --}}
+  {{!-- Ironhackers cards --}}
   <div id="page-wrapper">
     <div class="container-fluid">
       <!-- Page Heading -->
       <div class="row" id="main">
         <div class="col-sm-12 col-md-12 well">
           {{#each ironhackersAll}}
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
+          <!-- Ironhackers -->
+          <div class="ironhacker-item col-xs-12 col-sm-6 col-md-4">
             <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
               <div class="mainflip">
                 <div class="frontside">
@@ -67,11 +67,12 @@
                   <div class="card">
                     <div class="card-body text-center">
                       <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
-                      {{#each skills}}
                       <ul class="fa-ul">
-                        <li><i class="fa-li fa fa-check"></i>{{this.name}}</li>
+                        {{#each skills}}
+                        <li class="skill-item" data-skill="{{this._id}}"><i class="fa-li fa fa-check"></i>{{this.name}}</li>
+                        {{/each}}
                       </ul>
-                      {{/each}}
+
                       <a class="social-icon text-center btn" target="_blank" href="{{this.linkedinProfile}}">
                         <i class="fa fa-linkedin"></i>
                       </a>
@@ -84,7 +85,7 @@
           {{/each}}
         </div>
       </div>
-    {{!-- /.Ironhackers cards --}}
+      {{!-- /.Ironhackers cards --}}
       <!-- /.row -->
     </div>
     <!-- /.container-fluid -->

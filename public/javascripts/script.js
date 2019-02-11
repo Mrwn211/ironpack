@@ -68,9 +68,14 @@ $(function() {
 
 //Sidebar filters
 $("#filters :checkbox").click(function() {
-  $(".card").hide();
+  $(".ironhacker-item").hide();
   $("#filters :checkbox:checked").each(function() {
-    $(".card" + $(this).val()).show();
+    $(
+      ".skill-item[data-skill=" + $(this).val() + "]"
+      // ".category-item[data-category=" + $(this).val() + "]"
+    )
+      .parents(".ironhacker-item")
+      .show();
   });
+  //si rien coché, on affiche tout
 });
-

@@ -70,19 +70,19 @@ router.get(
           ironhacker.image;
           return ironhacker;
         });
-            
+
         Skill.find()
           .catch(err => next(err))
           .then(skills => {
-
             res.render("profiles/list-ironhackers", {
-              ironhackersAll, skills
+              ironhackersAll,
+              skills
             });
           });
       })
       .catch(error => {
         next(error);
-    });
+      });
   }
 );
 
