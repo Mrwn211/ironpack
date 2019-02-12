@@ -30,12 +30,6 @@
       <ul class="nav navbar-nav side-nav side-text">
         <div id="filters">
           <h2>Category</h2>
-          {{!-- {{#each projectsAll}}
-          <div>
-            <input class="category typo-text" name="category" type="checkbox" id="{{this.category}}" value="{{this.category}}">
-            <label class="category typo-text" for="category">{{this.category}}</label>
-          </div>
-          {{/each}} --}}
           <div>
             <input class="category typo-text" name="category" type="checkbox" id="Front-end" value="Front-end">
             <label class="category typo-text" for="Front-end">Front-end</label>
@@ -83,23 +77,30 @@
                 <div class="frontside">
                   <div class="card">
                     <div class="card-body text-center">
-                      <p><img class="img-fluid" src="{{this.image}}" alt="card image" /></p>
-                      <h4 class="card-title">{{this.name}}</h4>
-                      <p class="category-item card-text" data-category="{{this.category}}">{{this.category}}</p>
-                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                      <img class="img-fluid" src="{{this.owner.image}}" alt="card image" />
+                      <h4 class="card-title">{{this.owner.companyName}}</h4>
+                      <p class="category-item card-text" data-category="{{this.category}}">Category: {{this.category}}
+                      </p>
+                      <p class="category-item card-text">Duration: {{this.duration}}</p>
+                      <ul class="fa-ul list-inline">
+                        {{#each skills}}
+                        <li class="skill-item-project list-inline-item" data-skill-project="{{this._id}}">
+                          <div><i class="fa fa-check"></i>{{this.name}}</div>
+                        </li>
+                        {{/each}}
+                      </ul>
+                      
+                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-arrow-circle-o-right"></i></a>
                     </div>
                   </div>
                 </div>
                 <div class="backside">
                   <div class="card">
                     <div class="card-body text-center">
-                      <h4 class="card-title">{{this.name}}</h4>
-                      <ul class="fa-ul">
-                        {{#each skills}}
-                        <li class="skill-item-project" data-skill-project="{{this._id}}"><i class="fa-li fa fa-check"></i>{{this.name}}</li>
-                        {{/each}}
-                      </ul>
-                      </a>
+                      <img class="img-fluid" src="{{this.owner.image}}" alt="card image" />
+                      <h4 class="card-title">{{this.owner.companyName}}</h4>
+                      <p class="category-item card-text">Project name: {{this.name}}</p>
+                      <p class="category-item card-text">{{this.summary}}</p>
                     </div>
                   </div>
                 </div>
