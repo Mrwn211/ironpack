@@ -105,21 +105,6 @@ router.post(
   }
 );
 
-//Ironhacker see all the projects
-// router.get(
-//   "/projects-page",
-//   ensureLogin.ensureLoggedIn("/auth/login"),
-//   (req, res, next) => {
-//     Project.find()
-//       .then(projectsAll => {
-//         res.render("projects/list-projects", { projectsAll });
-//       })
-//       .catch(error => {
-//         next(error);
-//       });
-//   }
-// );
-
 router.get(
   "/projects-page",
   ensureLogin.ensureLoggedIn("/auth/login"),
@@ -128,12 +113,14 @@ router.get(
       // accountType: "enterprise"
     })
       .populate("skills")
+      .populate("owner")
       .then(projectsAll => {
         // projectsAll = projectsAll.map(project => {
         //   project.skills = project.skills.map(skill => skill.toJSON());
         //   return project;
         // });
-        Skill.find()
+        
+      Skill.find()
           .catch(err => next(err))
           .then(skills => {
             res.render("projects/list-projects", {

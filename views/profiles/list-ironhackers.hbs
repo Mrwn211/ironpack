@@ -42,7 +42,7 @@
     </div>
     <!-- /.navbar-collapse -->
   </nav>
-  {{!-- Ironhackers cards --}}
+{{!-- Ironhackers cards --}}
   <div id="page-wrapper">
     <div class="container-fluid">
       <!-- Page Heading -->
@@ -56,20 +56,21 @@
                 <div class="frontside">
                   <div class="card">
                     <div class="card-body text-center">
-                      <p><img class="img-fluid" src="{{this.image}}" alt="card image" /></p>
+                      <img class="img-fluid" src="{{this.image}}" alt="card image" />
                       <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
                       <p class="card-text">{{this.resume}}</p>
-                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-arrow-circle-o-right"></i></a>
                     </div>
                   </div>
                 </div>
                 <div class="backside">
                   <div class="card">
                     <div class="card-body text-center">
+                      <img class="img-fluid" src="{{this.image}}" alt="card image" />
                       <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
-                      <ul class="fa-ul">
+                      <ul class="fa-ul list-inline">
                         {{#each skills}}
-                        <li class="skill-item" data-skill="{{this._id}}"><i class="fa-li fa fa-check"></i>{{this.name}}</li>
+                        <li class="skill-item list-inline-item" data-skill="{{this._id}}"><i class="fa fa-check"></i>{{this.name}}</li>
                         {{/each}}
                       </ul>
 
