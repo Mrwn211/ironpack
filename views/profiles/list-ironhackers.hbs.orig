@@ -1,0 +1,106 @@
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Top Menu Items -->
+    <ul class="
+        nav navbar-right top-nav">
+      <li id="see-Project"><a href="/my-projects">Edit Project</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/profile/edit"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+          <li class="divider"></li>
+          <li><a href="/"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav side-nav side-text">
+<<<<<<< HEAD
+        <h2>Skills</h2>
+
+
+        {{#each skills}}
+        <input class="" name="skills" type="checkbox" id="{{this._id}}" value="{{this._id}}">
+        <label class="" for="{{this._id}}">{{this.name}}</label>
+        {{/each}}
+
+=======
+        <div id="filters">
+          <h2>Skills</h2>
+          {{#each skills}}
+          <div>
+            <input class="skills typo-text" name="skills" type="checkbox" id="{{this._id}}" value="{{this._id}}">
+            <label class="skills typo-text" for="{{this._id}}">{{this.name}}</label>
+          </div>
+          {{/each}}
+        </div>
+>>>>>>> 98c5c5a82d7130fea2f6524d6cb0be3ddd1c30bc
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+  {{!-- Ironhackers cards --}}
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main">
+        <div class="col-sm-12 col-md-12 well">
+          {{#each ironhackersAll}}
+          <!-- Ironhackers -->
+          <div class="ironhacker-item col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <img class="img-fluid" src="{{this.image}}" alt="card image" />
+                      <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
+                      <p class="card-text">{{this.resume}}</p>
+                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-arrow-circle-o-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <img class="img-fluid" src="{{this.image}}" alt="card image" />
+                      <h4 class="card-title">{{this.firstname}} {{this.lastname}}</h4>
+                      <ul class="fa-ul list-inline">
+                        {{#each skills}}
+                        <li class="skill-item list-inline-item" data-skill="{{this._id}}"><i class="fa fa-check"></i>{{this.name}}</li>
+                        {{/each}}
+                      </ul>
+
+                      <a class="social-icon text-center btn" target="_blank" href="{{this.linkedinProfile}}">
+                        <i class="fa fa-linkedin"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      {{!-- /.Ironhackers cards --}}
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /#page-wrapper -->
+</div><!-- /#wrapper -->

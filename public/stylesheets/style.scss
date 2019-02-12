@@ -393,7 +393,8 @@ section .section-title {
   color: #007b5e !important;
 }
 
-.frontside .card .card-body img {
+.card .card-body img {
+  border: 1px solid lightgrey;
   width: 120px;
   height: 120px;
   border-radius: 50%;
