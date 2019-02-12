@@ -63,12 +63,11 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Competences:</label>
 
-          <div class="competences-container col-lg-9">
+          <div class="competences-container col-lg-9 skills-">
             {{#each skills}}
-            <div class="form-check form-check-inline col-lg-3">
+            <div class="form-check form-check-inline col-lg-3 element-item">
               <input name="skills[]" class="form-check-input" type="checkbox" id="{{_id}}" value="{{_id}}"
-                {{#ifIn this._id ../userSkills}}checked{{/ifIn}}>
-              <label class="form-check-label" for="{{_id}}">{{name}}</label>
+                {{#ifIn this._id ../userSkills}} checked{{/ifIn}}> <label class="form-check-label" for="{{_id}}">{{name}}</label>
             </div>
             {{/each}}
           </div>
