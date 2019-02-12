@@ -57,7 +57,7 @@ a {
 }
 .table-title {
   padding-bottom: 15px;
-  background: #435d7d;
+  background: #00366f;
   color: #fff;
   padding: 16px 30px;
   margin: -20px -25px 10px;
@@ -440,6 +440,11 @@ section .section-title {
   float: left;
 }
 
+.navbar-inverse {
+  background-color: #00366f;
+  border-color: #00366f;
+}
+
 .top-nav > li > a {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -453,7 +458,7 @@ section .section-title {
 .top-nav > .open > a:hover,
 .top-nav > .open > a:focus {
   color: #fff;
-  background-color: #1a242f;
+  background-color: #00366f;
 }
 
 .top-nav > .open > .dropdown-menu {
@@ -483,9 +488,9 @@ section .section-title {
     margin-left: -225px;
     border: none;
     border-radius: 0;
-    border-top: 1px rgba(0, 0, 0, 0.5) solid;
+    // border-top: 1px rgba(0, 0, 0, 0.5) solid;
     overflow-y: auto;
-    background-color: #222;
+    background-color: #00366f;
     bottom: 0;
     overflow-x: hidden;
     padding-bottom: 40px;
@@ -499,7 +504,7 @@ section .section-title {
   .side-nav li a:hover,
   .side-nav li a:focus {
     outline: none;
-    background-color: #1a242f !important;
+    background-color: #00366f !important;
   }
 }
 
@@ -553,4 +558,117 @@ section .section-title {
   font-family: "Lucida Grande", Courier, monospace;
   font-size: 15px;
   font-weight: 200;
+}
+
+.label-file {
+  cursor: pointer;
+  color: #00b1ca;
+  font-weight: bold;
+}
+.label-file:hover {
+  color: #25a5c4;
+}
+
+// et on masque le input
+.input-file {
+  display: none;
+}
+#component-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+//Buttons
+.btn-get-started {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 0 20px 20px 0;
+  color: #fff;
+  background: #007bff;
+  border: 2px solid #007bff;
+  color: #fff;
+}
+
+.btn-get-started:hover {
+  background: none;
+  text-decoration: none;
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.btn-get-save {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 0 20px 20px 0;
+  color: #fff;
+  background: #29a745;
+  border: 2px solid #29a745;
+  color: #fff;
+}
+
+.btn-get-save:hover {
+  background: none;
+  text-decoration: none;
+  border-color: #29a745;
+  color: #29a745;
+}
+
+.btn-get-default {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 0 20px 20px 0;
+  color: gray;
+  background: #fff;
+  border: 2px solid grey;
+  color: grey;
+}
+
+.btn-get-default:hover {
+  background-color: grey;
+  text-decoration: none;
+  border-color: grey;
+  color: #fff;
+}
+
+.btn-get-add {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 0 20px 20px 0;
+  color: #fff;
+  background: #29a745;
+  border: 2px solid #29a745;
+  color: #fff;
+  position: relative;
+  left: 45%;
+}
+
+.btn-get-add:hover {
+  text-decoration: none;
+  border-color: #fff;
+  color: #fff;
 }
