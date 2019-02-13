@@ -300,7 +300,8 @@ section .section-title {
   text-transform: uppercase;
 }
 
-#team .card {
+
+.card {
   border: none;
   background: #ffffff;
 }
@@ -381,6 +382,7 @@ section .section-title {
 .frontside .card,
 .backside .card {
   min-height: 312px;
+  background-color: white;
 }
 
 .backside .card a {
@@ -393,7 +395,9 @@ section .section-title {
   color: #007b5e !important;
 }
 
-.frontside .card .card-body img {
+.card .card-body img {
+  margin-top: 15px;
+  border : 1px solid lightgrey;
   width: 120px;
   height: 120px;
   border-radius: 50%;
