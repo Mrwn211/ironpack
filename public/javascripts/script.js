@@ -67,29 +67,39 @@ $(function() {
 });
 
 //Sidebar filters ironhackers
-$("#filters :checkbox").click(function() {
-  $(".ironhacker-item").hide();
-  $("#filters :checkbox:checked").each(function() {
-    $(".skill-item[data-skill=" + $(this).val() + "]")
-      .parents(".ironhacker-item")
-      .show();
+if (window.location.pathname == "/ironhackers-page") {
+  $("#filters :checkbox").click(function() {
+    if ($("#filters :checkbox:checked").length <= 0) {
+      $(".ironhacker-item").show();
+    } else {
+      $(".ironhacker-item").hide();
+      $("#filters :checkbox:checked").each(function() {
+        $(".skill-item[data-skill=" + $(this).val() + "]")
+          .parents(".ironhacker-item")
+          .show();
+      });
+    }
   });
-  //si rien coché, on affiche tout
-});
+}
 
 //Sidebar filters projects
-$("#filters :checkbox").click(function() {
-  $(".project-item").hide();
-  $("#filters :checkbox:checked").each(function() {
-    $(
-      "p.category-item[data-category=" +
-        $(this).val() +
-        "], .skill-item-project[data-skill-project=" +
-        $(this).val() +
-        "]"
-    )
-      .parents(".project-item")
-      .show();
+if (window.location.pathname == "/projects-page") {
+  $("#filters :checkbox").click(function() {
+    if ($("#filters :checkbox:checked").length <= 0) {
+      $(".project-item").show();
+    } else {
+      $(".project-item").hide();
+      $("#filters :checkbox:checked").each(function() {
+        $(
+          "p.category-item[data-category=" +
+            $(this).val() +
+            "], .skill-item-project[data-skill-project=" +
+            $(this).val() +
+            "]"
+        )
+          .parents(".project-item")
+          .show();
+      });
+    }
   });
-  //si rien coché, on affiche tout
-});
+}
