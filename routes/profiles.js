@@ -66,7 +66,9 @@ router.get(
       .populate("skills")
       .then(ironhackersAll => {
         ironhackersAll = ironhackersAll.map(ironhacker => {
-          ironhacker.skills = ironhacker.skills.map(skill => skill.toJSON());
+          if (ironhacker.skills) {
+            ironhacker.skills = ironhacker.skills.map(skill => skill.toJSON());
+          }
           ironhacker.image;
           return ironhacker;
         });
